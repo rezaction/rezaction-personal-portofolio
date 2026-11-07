@@ -1,7 +1,7 @@
 {
   // GANTI "NAMA-WORKER-KAMU" dengan nama Worker di dashboard Cloudflare
   // (bagian paling depan dari alamat NAMA.AKUN.workers.dev). Harus sama persis.
-  "name": "rezaction.workers.dev",
+  "name": "rezaction-personal-portofolio",
   "main": "worker.js",
   "compatibility_date": "2025-11-01",
   "assets": {
