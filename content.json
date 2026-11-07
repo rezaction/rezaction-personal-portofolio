@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Reza Pamvngkas — A sarcastic little corner of the internet",
+    "title": "Reza Pamvngkas — Somewhere between genius and what the heck",
     "description": "Reza Pamvngkas — developer, designer, problem solver. A sarcastic little corner of the internet."
   },
   "cv": {
@@ -47,9 +47,9 @@
     "items": [
       {
         "name": "ADSPACE",
-        "url": "",
+        "url": "https://adspace.biz.id/",
         "desc": "A little web studio focused on building clean, affordable websites and landing pages.",
-        "status": "Status: Building."
+        "status": "Status: Active"
       },
       {
         "name": "VERA",
@@ -70,10 +70,46 @@
     "title": "THINGS I CAN DO (WITHOUT PANICKING).",
     "intro": "Not a list of superpowers. Just things I’ve learned, used, broken, and occasionally mastered.",
     "groups": [
-      { "name": "DEVELOPMENT", "chips": ["HTML & CSS", "JavaScript", "PHP", "Laravel"] },
-      { "name": "DESIGN & CREATIVE", "chips": ["CorelDRAW", "Adobe Photoshop", "Adobe Premiere Pro", "Graphic Design", "Logo & Apparel Design"] },
-      { "name": "BUSINESS & OPERATIONS", "chips": ["Operations Management", "Team Supervision", "Recruitment & Training", "Inventory & Purchasing", "Payroll & Administration", "Product Development"] },
-      { "name": "MANUFACTURING", "chips": ["Quality Control", "Good Manufacturing Practices (GMP)", "Occupational Health & Safety (K3)", "Halal Procedures", "Production Layout & Process Improvement"] }
+      {
+        "name": "DEVELOPMENT",
+        "chips": [
+          "HTML & CSS",
+          "JavaScript",
+          "PHP",
+          "Laravel"
+        ]
+      },
+      {
+        "name": "DESIGN & CREATIVE",
+        "chips": [
+          "CorelDRAW",
+          "Adobe Photoshop",
+          "Adobe Premiere Pro",
+          "Graphic Design",
+          "Logo & Apparel Design"
+        ]
+      },
+      {
+        "name": "BUSINESS & OPERATIONS",
+        "chips": [
+          "Operations Management",
+          "Team Supervision",
+          "Recruitment & Training",
+          "Inventory & Purchasing",
+          "Payroll & Administration",
+          "Product Development"
+        ]
+      },
+      {
+        "name": "MANUFACTURING",
+        "chips": [
+          "Quality Control",
+          "Good Manufacturing Practices (GMP)",
+          "Occupational Health & Safety (K3)",
+          "Halal Procedures",
+          "Production Layout & Process Improvement"
+        ]
+      }
     ],
     "super_tag": "THE ACTUAL SUPERPOWER",
     "super_big": "Adaptability. Improvisation.",
@@ -89,8 +125,14 @@
       {
         "title": "SUPERVISOR",
         "orgs": [
-          { "name": "CV Dwimanunggal Indonesia", "url": "" },
-          { "name": "PT Dwimanunggal Indonesia Sejahtera", "url": "" }
+          {
+            "name": "CV Dwimanunggal Indonesia",
+            "url": "dwimanunggal.co.id"
+          },
+          {
+            "name": "PT DMI Sejahtera",
+            "url": "dmisejahtera.co.id"
+          }
         ],
         "period": "2020 — 2025",
         "size": "s4",
@@ -112,10 +154,17 @@
       },
       {
         "title": "DATA RESEARCH & ANALYSIS",
-        "orgs": [{ "name": "Confidential Organization", "url": "" }],
+        "orgs": [
+          {
+            "name": "Political Party Organization",
+            "url": ""
+          }
+        ],
         "period": "2012 — 2014",
         "size": "s3",
-        "paragraphs": ["Worked independently on survey-related research, respondent analysis, and sensitive data projects."],
+        "paragraphs": [
+          "Worked independently on survey-related research, respondent analysis, and sensitive data projects."
+        ],
         "list_intro": "",
         "list": [],
         "note": "Some details are better left off the internet. You’re welcome."
@@ -138,24 +187,48 @@
   "now": {
     "title": "CURRENTLY WASTING TIME ON",
     "items": [
-      { "title": "BUILDING SOFTWARE.", "text": "Because apparently, having ideas isn’t enough. Now I have to build them." },
-      { "title": "LEARNING JAPANESE.", "text": "こんにちは. That’s about as far as my confidence goes." },
-      { "title": "EXPLORING RANDOM IDEAS.", "text": "Some make sense. Some probably shouldn’t exist." },
-      { "title": "TRYING TO FINISH UNFINISHED PROJECTS.", "text": "A never-ending battle between ambition and procrastination." }
+      {
+        "title": "BUILDING SOFTWARE.",
+        "text": "Because apparently, having ideas isn’t enough. Now I have to build them."
+      },
+      {
+        "title": "LEARNING JAPANESE.",
+        "text": "こんにちは. That’s about as far as my confidence goes."
+      },
+      {
+        "title": "EXPLORING RANDOM IDEAS.",
+        "text": "Some make sense. Some probably shouldn’t exist."
+      },
+      {
+        "title": "TRYING TO FINISH UNFINISHED PROJECTS.",
+        "text": "A never-ending battle between ambition and procrastination."
+      }
     ],
     "show_updated": true,
     "auto_date": true,
     "updated": "2026-11-07"
   },
   "contact": {
-    "title": "Find me, or don’t.",
+    "title": "FIND ME, OR DON'T!",
     "intro": "I’m not particularly hard to find. Just don’t expect me to be interesting 24/7.",
     "social_title": "AROUND THE INTERNET",
     "socials": [
-      { "label": "Instagram", "url": "https://instagram.com/rezapamvngkas" },
-      { "label": "Threads", "url": "https://www.threads.net/@rezapamvngkas" },
-      { "label": "GitHub", "url": "https://github.com/rezaction" },
-      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/rezapamvngkas" }
+      {
+        "label": "Instagram",
+        "url": "https://instagram.com/rezapamvngkas"
+      },
+      {
+        "label": "Threads",
+        "url": "https://www.threads.net/@rezapamvngkas"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/rezaction"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/rezaction"
+      }
     ],
     "email_title": "EMAIL",
     "email": "rezaction@proton.me",
@@ -171,7 +244,7 @@
   "egg": {
     "image": "assets/easter-egg.png",
     "alt": "Reza peeking over the box, giving the middle finger",
-    "title": "FUCK OFF.\nDO SOMETHING USEFUL.",
+    "title": "FVCK OFF.\nDO SOMETHING USEFUL.",
     "line1": "You really clicked that many times?",
     "line2": "— Reza, definitely."
   }
