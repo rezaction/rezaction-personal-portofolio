@@ -1,95 +1,36 @@
-Somewhere Between Genius and What the Heck.
+WEBSITE REZA PAMVNGKAS — versi dengan dashboard
 
-A comic-inspired personal portfolio website with a monochrome aesthetic, Bento Grid layout, and a personality that probably needs supervision.
+STRUKTUR
+  index.html      tampilan situs (membaca isi dari content.json)
+  content.json    SEMUA teks, link, dan path foto. Jangan diedit manual; pakai dashboard.
+  assets/         foto header & easter egg (foto baru dari dashboard masuk ke assets/uploads/)
+  _admin/         file dashboard (diblokir untuk publik; hanya terbuka lewat alamat rahasia + login)
+  worker.js       gerbang login dashboard (Cloudflare Workers)
+  wrangler.jsonc  konfigurasi Worker — GANTI "name" dengan nama Worker kamu
+  .assetsignore   daftar file yang tidak ikut dipublikasikan sebagai halaman web
 
-This project started as my personal website — a place to showcase who I am, what I build, what I've learned, and occasionally make fun of myself.
+PASANG (sekali saja)
+1. Upload/replace semua file ini ke repo GitHub (index.html, content.json, assets/, _admin/, worker.js, wrangler.jsonc, .assetsignore), commit. Cloudflare akan deploy otomatis.
+2. Buat token GitHub:
+   GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token
+   - Repository access: Only select repositories → pilih repo situs ini
+   - Repository permissions: Contents = Read and write
+3. Di Cloudflare → Worker → Settings → Variables and secrets (bagian Runtime, tipe Secret), buat 3 nilai: ADMIN_PATH (alamat rahasia), ADMIN_ID (40 karakter, jadi username), ADMIN_PASSWORD. Deploy ulang, lalu buka alamat rahasia itu dan login. Setelah itu, isi username GitHub, nama repo, branch (biasanya main), dan token.
+   Kalau file situs ada di dalam sub-folder repo (bukan di root), isi "Folder situs di repo".
 
-I decided to make it public so anyone can use it, customize it, and make it their own.
+PAKAI
+- Satu halaman per section di menu kiri. Edit teks, link, foto, tambah/hapus/urutkan item.
+- Tombol Preview menampilkan hasil langsung (Mobile/Desktop) sebelum disimpan.
+- "Simpan & Publish" = satu commit ke GitHub; situs update sekitar 1 menit.
+- Foto/CV yang dipilih baru diunggah saat Simpan. Foto > 2000px otomatis diperkecil.
+- Link proyek/organisasi yang kosong tampil sebagai teks biasa (tanpa panah ↗).
+- Tombol "Download CV" muncul di hero dan kontak setelah file/link CV diisi (Umum & CV).
 
-Because reinventing the wheel is exhausting. And honestly, this wheel looks pretty cool.
+KEAMANAN
+- Token hanya disimpan di browser perangkatmu. Tanpa token, dashboard tidak bisa mengubah apa pun.
+- Alamat, ID, dan password dashboard hanya ada di Cloudflare (ADMIN_PATH, ADMIN_ID, ADMIN_PASSWORD), tidak ada di repo.
+- Kalau token bocor/hilang, hapus di GitHub dan buat baru.
 
-✦ Features
-
-- Bento Grid Layout — A clean, responsive, and modern layout.
-- Comic-Inspired Design — Black-and-white visuals, bold outlines, halftone textures, and hand-drawn illustrations.
-- Personal Introduction — Showcase your identity, background, and personality.
-- Projects Showcase — Display your projects, experiments, and unfinished masterpieces.
-- Skills Section — Organize your technical and creative skills.
-- Experience Timeline — Share your professional journey.
-- Currently Section — Show what you're working on or learning.
-- Social Links — Connect your website with your social profiles.
-- Downloadable CV — Let visitors download your resume.
-- Interactive Easter Eggs — Because a normal footer is apparently too boring.
-
-✦ Design Philosophy
-
-Not another generic developer portfolio.
-
-The idea is to combine a personal portfolio with the visual language of comic books:
-
-- Monochrome color palette.
-- Bold typography.
-- Hand-drawn illustrations.
-- Halftone and ink textures.
-- Playful microcopy.
-- Subtle animations.
-- A little sarcasm here and there.
-
-Professional enough to show your work. Unprofessional enough to be memorable.
-
-✦ Customization
-
-Feel free to:
-
-- Change the name, profile, and personal information.
-- Replace illustrations and images.
-- Add or remove sections.
-- Change colors, typography, and layout.
-- Add your own animations and Easter eggs.
-- Use it as a personal portfolio or adapt it for your own creative project.
-
-You don't have to keep my questionable sense of humor.
-
-✦ Getting Started
-
-Clone the repository:
-
-git clone https://github.com/rezaction/personal-portfolio.git
-
-Open the project directory:
-
-cd personal-portfolio
-
-Install dependencies if required by the project:
-
-npm install
-
-Run the development server:
-
-npm run dev
-
-Note: Commands may vary depending on the project setup.
-
-✦ License
-
-This project is open-source and free to use.
-
-You are welcome to modify, customize, and use it for your own personal or commercial portfolio.
-
-Please check the repository's LICENSE file for the exact terms of use.
-
-Credit is appreciated, but making something cool with it is even better.
-
-✦ Final Words
-
-Feel free to explore, fork, modify, and build something interesting.
-
-If you use this project, I'd love to see what you make with it.
-
-And remember:
-
-Somewhere between genius and what the heck.
-
-— Reza Pamvngkas
-
-"GitHub" (https://github.com/rezaction)
+CATATAN
+- Membuka index.html langsung dari file (double-click) tidak akan menampilkan isi karena browser memblokir fetch. Tes lewat hosting, atau: python3 -m http.server di folder ini.
+- Konten dirender oleh JavaScript (Google tetap bisa membacanya).

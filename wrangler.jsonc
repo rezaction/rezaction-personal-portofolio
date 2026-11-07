@@ -1,0 +1,12 @@
+{
+  // GANTI "NAMA-WORKER-KAMU" dengan nama Worker di dashboard Cloudflare
+  // (bagian paling depan dari alamat NAMA.AKUN.workers.dev). Harus sama persis.
+  "name": "NAMA-WORKER-KAMU",
+  "main": "worker.js",
+  "compatibility_date": "2025-11-01",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  }
+}

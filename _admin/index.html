@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Dashboard Reza</title>
+<style>
+:root{--bg:#f4f4f1;--panel:#fff;--ink:#111;--mut:#6b6b66;--line:#d8d8d3;--soft:#ecece8;--accent:#111;--onacc:#fff;--danger:#b3261e;--ok:#1b7a3d;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#121212;--panel:#1c1c1c;--ink:#f2f2ef;--mut:#9a9a94;--line:#333;--soft:#262626;--accent:#f2f2ef;--onacc:#111;--danger:#ff8a80;--ok:#6fd48f;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+[hidden]{display:none!important}
+button,input,select,textarea{font:inherit;color:inherit}
+.btn{border:2px solid var(--ink);background:var(--panel);padding:7px 14px;border-radius:6px;cursor:pointer;font-weight:600;white-space:nowrap}
+.btn:hover{background:var(--soft)}
+.btn.primary{background:var(--accent);color:var(--onacc);box-shadow:3px 3px 0 var(--mut)}
+.btn.primary:hover{background:var(--accent);transform:translate(1px,1px);box-shadow:2px 2px 0 var(--mut)}
+.btn.primary:disabled{opacity:.45;cursor:default;box-shadow:none;transform:none}
+.btn.sm{padding:3px 10px;font-size:13px;border-width:1.5px}
+.btn.danger{border-color:var(--danger);color:var(--danger)}
+.icon{border:0;background:none;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1}
+input[type=text],input[type=password],input[type=date],select,textarea{width:100%;padding:8px 10px;border:1.5px solid var(--line);border-radius:6px;background:var(--panel)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ink);outline-offset:1px;border-color:var(--ink)}
+textarea{resize:vertical;min-height:40px;overflow:hidden}
+/* top bar */
+.top{position:sticky;top:0;z-index:20;height:56px;display:flex;align-items:center;gap:10px;padding:0 14px;background:var(--panel);border-bottom:2px solid var(--ink)}
+.brand{font-weight:800;letter-spacing:.04em}.brand span{font-weight:400;color:var(--mut);margin-left:6px}
+.sp{flex:1}
+.dirty{font-size:13px;color:var(--danger);font-weight:600}
+#menuBtn{display:none}
+/* layout */
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:calc(100vh - 56px)}
+nav{padding:16px 12px;border-right:1px solid var(--line);position:sticky;top:56px;height:calc(100vh - 56px);overflow:auto}
+nav button{display:flex;width:100%;gap:10px;align-items:center;text-align:left;border:0;background:none;padding:9px 12px;border-radius:6px;cursor:pointer;font-weight:500}
+nav button:hover{background:var(--soft)}
+nav button.on{background:var(--accent);color:var(--onacc);font-weight:700}
+nav hr{border:0;border-top:1px solid var(--line);margin:10px 0}
+#editor{padding:24px clamp(14px,3vw,36px) 120px;max-width:820px;width:100%}
+#editor h1{font-size:26px;margin:0 0 2px}
+.desc{color:var(--mut);margin:0 0 22px}
+/* fields */
+.field{margin:0 0 16px}
+.lbl{display:block;font-weight:600;font-size:13.5px;margin-bottom:5px}
+.hint{color:var(--mut);font-size:12.5px;margin-top:4px}
+.field.inline{display:flex;align-items:center;gap:10px}.field.inline .lbl{margin:0}
+.row{display:flex;gap:6px;align-items:flex-start;margin-bottom:6px}
+.row>:first-child{flex:1}
+.mini{border:1.5px solid var(--line);background:var(--panel);border-radius:6px;width:34px;height:36px;cursor:pointer;flex:none}
+.mini:hover{border-color:var(--ink)}
+.mini.x:hover{border-color:var(--danger);color:var(--danger)}
+.media{display:flex;flex-direction:column;gap:8px}
+.thumb{max-width:220px;max-height:160px;object-fit:contain;border:1.5px dashed var(--line);border-radius:6px;padding:4px;background:#fff}
+.mrow{display:flex;gap:6px;flex-wrap:wrap}.mrow input[type=text]{flex:1;min-width:160px}
+.chipbox{display:flex;flex-wrap:wrap;gap:6px;border:1.5px solid var(--line);border-radius:6px;padding:7px;background:var(--panel)}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--soft);border:1.5px solid var(--ink);border-radius:5px;padding:1px 4px 1px 9px;font-size:13.5px}
+.chip button{border:0;background:none;cursor:pointer;padding:0 4px;font-size:15px;line-height:1.2}
+.chipbox input{flex:1;min-width:140px;border:0!important;outline:0!important;padding:4px;background:none}
+.items{display:flex;flex-direction:column;gap:10px}
+.card{border:2px solid var(--ink);border-radius:8px;background:var(--panel)}
+.card>summary{display:flex;align-items:center;gap:8px;padding:9px 12px;cursor:pointer;list-style:none;font-weight:700}
+.card>summary::-webkit-details-marker{display:none}
+.card>summary::before{content:"▸";transition:transform .15s}
+.card[open]>summary::before{transform:rotate(90deg)}
+.ct{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acts{display:flex;gap:4px}
+.card .body{padding:4px 14px 6px;border-top:1.5px solid var(--line)}
+.card .body{padding-top:14px}
+.card .card{border-width:1.5px}
+.add{align-self:flex-start}
+.group{margin:26px 0 12px;padding-top:14px;border-top:2px solid var(--ink);font-weight:800;letter-spacing:.03em}
+/* login */
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.lbox{width:min(520px,100%);background:var(--panel);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);border-radius:8px;padding:26px}
+.lbox h1{margin:0 0 4px;font-size:24px}
+details.how{margin:12px 0 18px;font-size:14px;color:var(--mut)}
+details.how ol{padding-left:20px;margin:8px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{color:var(--danger);margin:10px 0 0;font-weight:600;white-space:pre-wrap}
+/* preview */
+#preview{display:none;flex-direction:column;background:var(--panel);border-left:1px solid var(--line)}
+.pvbar{display:flex;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line)}
+.pvwrap{flex:1;position:relative;overflow:hidden;background:var(--soft)}
+#pv{border:0;background:#fff;position:absolute;top:0;left:0;transform-origin:0 0}
+body.pv #preview{display:flex}
+@media(min-width:1280px){
+ body.pv .layout{grid-template-columns:230px minmax(0,1fr) 440px}
+ #preview{position:sticky;top:56px;height:calc(100vh - 56px)}
+ #pvClose{display:none}
+}
+@media(max-width:1279px){
+ body.pv #preview{position:fixed;inset:56px 0 0 0;z-index:30}
+}
+@media(max-width:900px){
+ .layout{grid-template-columns:minmax(0,1fr)}
+ #menuBtn{display:block}
+ nav{position:fixed;top:56px;left:0;bottom:0;width:260px;z-index:25;background:var(--panel);transform:translateX(-100%);transition:transform .2s;height:auto;border-right:2px solid var(--ink)}
+ body.nav nav{transform:none}
+ .brand span,#prevBtn .t{display:none}
+ .two{grid-template-columns:1fr}
+}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--accent);color:var(--onacc);padding:10px 18px;border-radius:8px;z-index:60;max-width:92vw;font-weight:600;box-shadow:4px 4px 0 var(--mut)}
+#toast.bad{background:var(--danger);color:#fff}
+</style>
+</head>
+<body>
+
+<!-- LOGIN / KONEKSI -->
+<div id="login" hidden>
+ <form class="lbox" id="lform" autocomplete="off">
+  <h1>Dashboard Reza</h1>
+  <p class="desc" style="margin-bottom:0">Hubungkan ke repo GitHub situsmu. Semua perubahan disimpan sebagai commit, lalu Cloudflare otomatis deploy.</p>
+  <details class="how"><summary><b>Cara membuat token (sekali saja)</b></summary>
+   <ol>
+    <li>Buka GitHub → Settings → Developer settings → Personal access tokens → <b>Fine-grained tokens</b> → Generate new token.</li>
+    <li>Repository access: <b>Only select repositories</b> → pilih repo situs ini saja.</li>
+    <li>Permissions → Repository permissions → <b>Contents: Read and write</b>.</li>
+    <li>Expiration: pilih sesukamu, lalu Generate dan salin token (diawali <code>github_pat_</code>).</li>
+   </ol>
+   Token hanya disimpan di browser perangkat ini.
+  </details>
+  <div class="two">
+   <div class="field"><label class="lbl">Username/Owner GitHub</label><input type="text" id="c_owner" placeholder="rezaction" required></div>
+   <div class="field"><label class="lbl">Nama repo</label><input type="text" id="c_repo" placeholder="reza-website" required></div>
+   <div class="field"><label class="lbl">Branch</label><input type="text" id="c_branch" value="main" required></div>
+   <div class="field"><label class="lbl">Folder situs di repo</label><input type="text" id="c_base" placeholder="(kosong = root repo)"></div>
+  </div>
+  <div class="field"><label class="lbl">Personal access token</label><input type="password" id="c_token" placeholder="github_pat_..." required></div>
+  <div style="display:flex;gap:10px;align-items:center"><button class="btn primary" id="lbtn" type="submit">Masuk</button><button class="btn" type="button" id="lcancel" hidden>Batal</button></div>
+  <p class="err" id="lerr" hidden></p>
+ </form>
+</div>
+
+<!-- APLIKASI -->
+<div id="app" hidden>
+ <header class="top">
+  <button class="icon" id="menuBtn" aria-label="Menu">☰</button>
+  <div class="brand">REZA<span>/ dashboard</span></div>
+  <div class="sp"></div>
+  <span class="dirty" id="dirty" hidden>● Belum disimpan</span>
+  <button class="btn" id="prevBtn">👁 <span class="t">Preview</span></button>
+  <button class="btn primary" id="saveBtn" disabled>Simpan &amp; Publish</button>
+ </header>
+ <div class="layout">
+  <nav id="nav"></nav>
+  <main id="editor"></main>
+  <aside id="preview">
+   <div class="pvbar"><b style="flex:1">Preview live</b>
+    <button class="btn sm" id="pvMode">Tampilan: Mobile</button>
+    <button class="btn sm" id="pvClose">Tutup ✕</button></div>
+   <div class="pvwrap" id="pvwrap"><iframe id="pv" title="Preview" src="../index.html?preview=1"></iframe></div>
+  </aside>
+ </div>
+</div>
+<div id="toast" hidden></div>
+
+<script>
+'use strict';
+/* ============ SKEMA: satu entri = satu halaman dashboard ============ */
+const T=(p,label,o)=>Object.assign({p,t:'text',label},o||{});
+const A=(p,label,o)=>Object.assign({p,t:'area',label},o||{});
+const L=(p,label,o)=>Object.assign({p,t:'strings',label},o||{});
+const PAGES=[
+ {id:'general',icon:'⚙️',label:'Umum & CV',anchor:'top',desc:'Judul tab browser, deskripsi untuk Google, dan file CV.',fields:[
+  T('meta.title','Judul tab browser'),
+  A('meta.description','Deskripsi (muncul di hasil Google)'),
+  {p:'cv.url',t:'file',label:'File CV',accept:'application/pdf,.pdf,.doc,.docx',hint:'Upload PDF, atau tempel link (mis. Google Drive). Kalau kosong, tombol “Download CV” disembunyikan di semua tempat.'},
+  T('cv.text','Teks tombol CV')]},
+ {id:'hero',icon:'🏠',label:'Hero (paling atas)',anchor:'top',desc:'Bagian pembuka: judul, kalimat perkenalan, tombol, dan foto.',fields:[
+  T('hero.tag','Label kecil di atas'),
+  A('hero.name','Nama besar',{rows:2,hint:'Enter = baris baru.'}),
+  L('hero.paragraphs','Paragraf perkenalan',{multiline:true}),
+  T('hero.marker','Tulisan tangan (spidol)'),
+  T('hero.location','Baris lokasi'),
+  T('hero.btn_text','Teks tombol utama'),
+  T('hero.btn_href','Tujuan tombol utama',{hint:'Bagian halaman: #about, #projects, #skills, #experience, #now, #contact. Atau link lengkap https://…'}),
+  {p:'hero.image',t:'img',label:'Foto header'},
+  T('hero.image_alt','Deskripsi foto (alt text)'),
+  T('hero.burst','Teks di atas foto'),
+  T('hero.caption','Keterangan di bawah foto')]},
+ {id:'about',icon:'🙋',label:'Tentang saya',anchor:'about',desc:'Bagian “So, who am I?” dan kotak fakta.',fields:[
+  T('about.title','Judul'),
+  L('about.paragraphs','Paragraf',{multiline:true}),
+  T('about.facts_tag','Judul kotak fakta'),
+  L('about.facts','Daftar fakta')]},
+ {id:'projects',icon:'🛠️',label:'Proyek',anchor:'projects',desc:'Tambah, hapus, urutkan proyek. Isi link supaya nama proyek bisa diklik.',fields:[
+  T('projects.title','Judul'),
+  T('projects.marker','Tulisan tangan'),
+  A('projects.intro','Pengantar'),
+  {p:'projects.items',t:'items',label:'Daftar proyek',noun:'Proyek',addText:'+ Tambah proyek',title:i=>i.name,
+   new:{name:'PROYEK BARU',url:'',desc:'',status:'Status: '},fields:[
+    T('name','Nama proyek'),T('url','Link proyek',{ph:'https://…',hint:'Kosong = nama proyek tampil tanpa link.'}),
+    A('desc','Deskripsi'),T('status','Status')]},
+  T('projects.note','Catatan di bawah')]},
+ {id:'skills',icon:'⚡',label:'Skill',anchor:'skills',desc:'Kelompok skill dan kotak “superpower”.',fields:[
+  T('skills.title','Judul'),
+  A('skills.intro','Pengantar'),
+  {p:'skills.groups',t:'items',label:'Kelompok skill',noun:'Kelompok',addText:'+ Tambah kelompok',title:i=>i.name,
+   new:{name:'KELOMPOK BARU',chips:[]},fields:[
+    T('name','Nama kelompok'),{p:'chips',t:'chips',label:'Skill',hint:'Ketik lalu Enter. Bisa tempel beberapa sekaligus dipisah koma.'}]},
+  {t:'group',label:'Kotak “superpower”'},
+  T('skills.super_tag','Label'),T('skills.super_big','Teks besar'),A('skills.super_text','Teks'),T('skills.super_note','Catatan')]},
+ {id:'experience',icon:'💼',label:'Pengalaman',anchor:'experience',desc:'Riwayat kerja dan angka statistik.',fields:[
+  T('experience.title','Judul'),
+  A('experience.intro','Pengantar'),
+  T('experience.stat_big','Angka besar',{hint:'Kosongkan untuk menyembunyikan kotak statistik.'}),
+  T('experience.stat_text','Teks angka'),
+  {p:'experience.jobs',t:'items',label:'Pengalaman kerja',noun:'Pengalaman',addText:'+ Tambah pengalaman',title:i=>i.title,
+   new:{title:'JUDUL / POSISI',orgs:[],period:'',size:'s3',paragraphs:[''],list_intro:'',list:[],note:''},fields:[
+    T('title','Posisi / judul'),
+    {p:'orgs',t:'items',label:'Perusahaan / organisasi',noun:'Organisasi',addText:'+ Tambah organisasi',title:i=>i.name,new:{name:'',url:''},fields:[T('name','Nama'),T('url','Link (opsional)',{ph:'https://…'})]},
+    T('period','Periode',{ph:'2020 — 2025'}),
+    {p:'size',t:'select',label:'Lebar kotak',options:[['s6','Penuh'],['s4','Lebar (2/3)'],['s3','Setengah'],['s2','Sempit (1/3)']]},
+    L('paragraphs','Paragraf',{multiline:true}),
+    T('list_intro','Kalimat pengantar daftar'),L('list','Daftar poin'),T('note','Catatan tulisan tangan')]}]},
+ {id:'now',icon:'⏳',label:'Sedang dikerjakan',anchor:'now',desc:'Bagian “Currently wasting time on”.',fields:[
+  T('now.title','Judul'),
+  {p:'now.items',t:'items',label:'Daftar',noun:'Item',addText:'+ Tambah item',title:i=>i.title,new:{title:'JUDUL.',text:''},fields:[T('title','Judul'),A('text','Teks')]},
+  {p:'now.show_updated',t:'bool',label:'Tampilkan “Last updated”'},
+  {p:'now.auto_date',t:'bool',label:'Perbarui tanggal otomatis tiap kali bagian ini disimpan'},
+  {p:'now.updated',t:'date',label:'Tanggal “Last updated”'}]},
+ {id:'contact',icon:'✉️',label:'Kontak',anchor:'contact',desc:'Link sosial media, email, dan tombol.',fields:[
+  T('contact.title','Judul'),A('contact.intro','Pengantar'),
+  T('contact.social_title','Judul daftar sosial media'),
+  {p:'contact.socials',t:'items',label:'Sosial media',noun:'Link',addText:'+ Tambah link',title:i=>i.label,new:{label:'',url:''},fields:[T('label','Nama'),T('url','URL',{ph:'https://…'})]},
+  T('contact.email_title','Judul email'),T('contact.email','Alamat email'),
+  T('contact.note','Catatan'),T('contact.hire_text','Teks tombol email')]},
+ {id:'footer',icon:'👋',label:'Footer & Easter egg',anchor:'foot',desc:'Penutup halaman, dan kejutan yang muncul kalau footer diklik 5×.',fields:[
+  T('footer.title','Judul footer'),T('footer.marker','Tulisan tangan'),T('footer.text','Teks'),T('footer.signature','Tanda tangan'),
+  {t:'group',label:'Easter egg (klik footer 5×)'},
+  {p:'egg.image',t:'img',label:'Foto easter egg'},T('egg.alt','Deskripsi foto (alt text)'),
+  A('egg.title','Judul',{rows:2}),T('egg.line1','Baris 1'),T('egg.line2','Baris 2')]}
+];
+
+/* ============ UTIL ============ */
+const $=s=>document.querySelector(s);
+function h(tag,a,...kids){const e=document.createElement(tag);for(const k in a||{}){const v=a[k];if(k==='class')e.className=v;else if(k.startsWith('on'))e.addEventListener(k.slice(2),v);else if(v===true)e.setAttribute(k,'');else if(v!==false&&v!=null)e.setAttribute(k,v)}for(const c of kids.flat()){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(c))}return e}
+const get=(o,p)=>p.split('.').reduce((a,k)=>a==null?a:a[k],o);
+const set=(o,p,v)=>{const ks=p.split('.'),l=ks.pop();let a=o;for(const k of ks){if(a[k]==null||typeof a[k]!=='object')a[k]={};a=a[k]}a[l]=v};
+const ensureArr=(o,p)=>{let a=get(o,p);if(!Array.isArray(a)){a=[];set(o,p,a)}return a};
+const today=()=>{const d=new Date(),z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())};
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+let toastT;function toast(msg,bad){const t=$('#toast');t.textContent=msg;t.className=bad?'bad':'';t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,bad?6000:3500)}
+function autosize(t){t.style.height='auto';t.style.height=(t.scrollHeight+2)+'px'}
+
+/* ============ STATE ============ */
+const S={cfg:null,content:null,orig:'',nowSig:'',pending:{},media:{},page:'general',pv:false,pvDesktop:false};
+const dirty=()=>!!S.content&&(JSON.stringify(S.content)!==S.orig||Object.keys(S.pending).length>0);
+
+function changed(){
+ const d=dirty();$('#dirty').hidden=!d;$('#saveBtn').disabled=!d;
+ clearTimeout(changed.t);changed.t=setTimeout(sendPreview,200)}
+window.addEventListener('beforeunload',e=>{if(dirty()){e.preventDefault();e.returnValue=''}});
+window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();save()}});
+
+/* ============ GITHUB ============ */
+async function gh(path,body,method){
+ const c=S.cfg,res=await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}/${path}`,{method:method||(body?'POST':'GET'),cache:'no-store',
+  headers:{Authorization:'Bearer '+c.token,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...(body?{'Content-Type':'application/json'}:{})},body:body?JSON.stringify(body):undefined});
+ if(!res.ok){let m='';try{m=(await res.json()).message}catch(e){}
+  const err=new Error(res.status===401?'Token salah atau sudah kedaluwarsa.':res.status===403?'Token tidak punya izin. Pastikan “Contents: Read and write” untuk repo ini. ('+m+')':res.status===404?'Repo/branch/file tidak ditemukan, atau token tidak punya akses ke repo ini.':res.status===422&&/fast.?forward/i.test(m)?'Ada perubahan lain di repo. Muat ulang dashboard lalu coba lagi.':(m||'Error '+res.status));
+  err.status=res.status;throw err}
+ return res.status===204?null:res.json()}
+const basePath=()=>{let b=(S.cfg.base||'').trim().replace(/^\/+|\/+$/g,'');return b?b+'/':''};
+
+async function loadContent(){
+ const c=S.cfg,r=await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}/contents/${basePath()}content.json?ref=${encodeURIComponent(c.branch)}`,
+  {cache:'no-store',headers:{Authorization:'Bearer '+c.token,Accept:'application/vnd.github.raw+json'}});
+ if(r.status===404)throw new Error('content.json tidak ditemukan di repo (folder: “'+(basePath()||'root')+'”, branch: '+c.branch+'). Pastikan paket situs baru sudah di-upload ke repo, atau cek “Folder situs di repo”.');
+ if(r.status===401)throw new Error('Token salah atau sudah kedaluwarsa.');
+ if(!r.ok)throw new Error('Gagal memuat content.json (HTTP '+r.status+').');
+ S.content=JSON.parse(await r.text());S.orig=JSON.stringify(S.content);S.nowSig=nowSig();S.pending={}}
+const nowSig=()=>JSON.stringify({...(S.content.now||{}),updated:0});
+
+async function save(){
+ if(!dirty())return;const btn=$('#saveBtn');btn.disabled=true;btn.textContent='Menyimpan…';
+ try{
+  if(S.content.now&&S.content.now.auto_date&&nowSig()!==S.nowSig)S.content.now.updated=today();
+  const json=JSON.stringify(S.content,null,2)+'\n',b=basePath();
+  const files=Object.keys(S.pending).filter(p=>json.includes(p));
+  const ref=await gh(`git/ref/heads/${S.cfg.branch}`),parent=ref.object.sha,pc=await gh(`git/commits/${parent}`);
+  const tree=[{path:b+'content.json',mode:'100644',type:'blob',sha:(await gh('git/blobs',{content:json,encoding:'utf-8'})).sha}];
+  for(const p of files)tree.push({path:b+p,mode:'100644',type:'blob',sha:(await gh('git/blobs',{content:S.pending[p],encoding:'base64'})).sha});
+  const nt=await gh('git/trees',{base_tree:pc.tree.sha,tree});
+  const nc=await gh('git/commits',{message:'Update konten via dashboard',tree:nt.sha,parents:[parent]});
+  await gh(`git/refs/heads/${S.cfg.branch}`,{sha:nc.sha},'PATCH');
+  S.orig=JSON.stringify(S.content);S.nowSig=nowSig();S.pending={};
+  toast('Tersimpan ✓ Situs akan update dalam ±1 menit.');
+ }catch(e){toast('Gagal menyimpan: '+e.message,true)}
+ btn.textContent='Simpan & Publish';changed();
+ if(S.page==='now')openPage('now')}
+
+/* ============ UPLOAD (ditahan di memori sampai Simpan) ============ */
+async function maybeResize(f){
+ if(!/^image\/(png|jpeg|webp)$/.test(f.type))return f;
+ try{const bmp=await createImageBitmap(f),max=2000;if(bmp.width<=max)return f;
+  const c=document.createElement('canvas');c.width=max;c.height=Math.round(bmp.height*max/bmp.width);c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);
+  return await new Promise(r=>c.toBlob(b=>r(b||f),f.type,.9))}catch(e){return f}}
+const readB64=b=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(b)});
+async function stage(file,dir){
+ if(file.size>25*1024*1024)throw new Error('File terlalu besar (maks 25 MB).');
+ const blob=await maybeResize(file),dataUrl=await readB64(blob);
+ const m=/(.*?)(\.[a-z0-9]+)?$/i.exec(file.name),base=(m[1]||'file').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'file';
+ const path=dir+base+'-'+Date.now().toString(36).slice(-4)+(m[2]||'').toLowerCase();
+ S.pending[path]=dataUrl.split(',')[1];if(blob.type.startsWith('image/'))S.media[path]=dataUrl;return path}
+const resolveSrc=v=>S.media[v]||(/^(https?:|data:|\/)/.test(v)?v:'../'+v);
+
+/* ============ FIELD RENDERERS ============ */
+function field(obj,f){
+ const wrap=h('div',{class:'field'+(f.t==='bool'?' inline':'')}),lbl=h('label',{class:'lbl'},f.label);
+ const hint=f.hint?h('div',{class:'hint'},f.hint):null,val=()=>get(obj,f.p);
+ const bind=(el,evt,fn)=>el.addEventListener(evt,()=>{fn();changed()});
+ if(f.t==='text'){const i=h('input',{type:'text',placeholder:f.ph||''});i.value=val()??'';bind(i,'input',()=>set(obj,f.p,i.value));wrap.append(lbl,i)}
+ else if(f.t==='area'){const i=h('textarea',{rows:f.rows||2});i.value=val()??'';bind(i,'input',()=>{set(obj,f.p,i.value);autosize(i)});wrap.append(lbl,i);requestAnimationFrame(()=>autosize(i))}
+ else if(f.t==='select'){const i=h('select',{},f.options.map(([v,l])=>h('option',{value:v},l)));i.value=val()||f.options[0][0];bind(i,'change',()=>set(obj,f.p,i.value));wrap.append(lbl,i)}
+ else if(f.t==='bool'){const i=h('input',{type:'checkbox'});i.checked=!!val();bind(i,'change',()=>set(obj,f.p,i.checked));wrap.append(i,lbl)}
+ else if(f.t==='date'){const i=h('input',{type:'date'});i.value=val()||'';bind(i,'input',()=>set(obj,f.p,i.value));wrap.append(lbl,h('div',{class:'mrow'},i,h('button',{type:'button',class:'btn sm',onclick:()=>{i.value=today();set(obj,f.p,i.value);changed()}},'Hari ini')))}
+ else if(f.t==='img'||f.t==='file')wrap.append(lbl,mediaField(obj,f));
+ else if(f.t==='strings')wrap.append(lbl,stringsField(obj,f));
+ else if(f.t==='chips')wrap.append(lbl,chipsField(obj,f));
+ else if(f.t==='items')wrap.append(lbl,itemsField(obj,f));
+ if(hint)wrap.append(hint);return wrap}
+
+function mediaField(obj,f){
+ const isImg=f.t==='img',th=isImg?h('img',{class:'thumb',alt:''}):null,path=h('input',{type:'text',placeholder:isImg?'assets/…':'https://… atau upload file'});
+ const file=h('input',{type:'file',hidden:true,accept:f.accept||(isImg?'image/*':'')});
+ const thumb=()=>{if(th){const v=get(obj,f.p)||'';th.hidden=!v;if(v)th.src=resolveSrc(v)}};
+ path.value=get(obj,f.p)||'';thumb();
+ path.addEventListener('input',()=>{set(obj,f.p,path.value.trim());thumb();changed()});
+ file.addEventListener('change',async()=>{const fl=file.files[0];if(!fl)return;
+  try{const p=await stage(fl,isImg?'assets/uploads/':'assets/files/');set(obj,f.p,p);path.value=p;thumb();changed();toast('File siap. Klik “Simpan & Publish” untuk mengunggah.')}catch(e){toast(e.message,true)}file.value=''});
+ return h('div',{class:'media'},th,h('div',{class:'mrow'},path,h('button',{type:'button',class:'btn sm',onclick:()=>file.click()},isImg?'Ganti foto…':'Upload file…'),
+  h('button',{type:'button',class:'btn sm danger',onclick:()=>{set(obj,f.p,'');path.value='';thumb();changed()}},'Hapus')),file)}
+
+function mv(a,i,d){const j=i+d;if(j<0||j>=a.length)return false;[a[i],a[j]]=[a[j],a[i]];return true}
+
+function stringsField(obj,f){
+ const a=ensureArr(obj,f.p),box=h('div');
+ const draw=()=>{box.replaceChildren();a.forEach((v,i)=>{
+  const inp=f.multiline?h('textarea',{rows:2}):h('input',{type:'text'});inp.value=v;
+  inp.addEventListener('input',()=>{a[i]=inp.value;if(f.multiline)autosize(inp);changed()});
+  box.append(h('div',{class:'row'},inp,h('button',{type:'button',class:'mini',title:'Naik',onclick:()=>{if(mv(a,i,-1)){draw();changed()}}},'↑'),h('button',{type:'button',class:'mini',title:'Turun',onclick:()=>{if(mv(a,i,1)){draw();changed()}}},'↓'),h('button',{type:'button',class:'mini x',title:'Hapus',onclick:()=>{a.splice(i,1);draw();changed()}},'✕')));
+  if(f.multiline)requestAnimationFrame(()=>autosize(inp))});
+  box.append(h('button',{type:'button',class:'btn sm',onclick:()=>{a.push('');draw();changed();const l=box.querySelectorAll('input,textarea');l[l.length-1]?.focus()}},'+ Tambah'))};
+ draw();return box}
+
+function chipsField(obj,f){
+ const a=ensureArr(obj,f.p),box=h('div',{class:'chipbox'}),inp=h('input',{type:'text',placeholder:'Ketik lalu Enter…'});
+ const add=s=>{const parts=s.split(/[\n,]/).map(x=>x.trim()).filter(Boolean);if(parts.length){a.push(...parts);draw();changed()}};
+ const draw=()=>{box.replaceChildren(...a.map((v,i)=>h('span',{class:'chip'},v,h('button',{type:'button','aria-label':'Hapus '+v,onclick:()=>{a.splice(i,1);draw();changed()}},'×'))),inp)};
+ inp.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===','){e.preventDefault();const v=inp.value;inp.value='';add(v);inp.focus()}else if(e.key==='Backspace'&&!inp.value&&a.length){a.pop();draw();changed();inp.focus()}});
+ inp.addEventListener('paste',e=>{const t=(e.clipboardData||window.clipboardData).getData('text');if(/[\n,]/.test(t)){e.preventDefault();add(t)}});
+ inp.addEventListener('blur',()=>{const v=inp.value;if(v.trim()){inp.value='';add(v)}});
+ draw();return box}
+
+function itemsField(obj,f){
+ const a=ensureArr(obj,f.p),box=h('div',{class:'items'});
+ const draw=()=>{box.replaceChildren();a.forEach((it,i)=>{
+  const title=h('span',{class:'ct'}),upd=()=>{title.textContent=(f.title&&f.title(it))||`${f.noun||'Item'} ${i+1}`};upd();
+  const stop=fn=>e=>{e.preventDefault();e.stopPropagation();fn()};
+  const acts=h('span',{class:'acts'},
+   h('button',{type:'button',class:'mini',title:'Naik',onclick:stop(()=>{if(mv(a,i,-1)){draw();changed()}})},'↑'),
+   h('button',{type:'button',class:'mini',title:'Turun',onclick:stop(()=>{if(mv(a,i,1)){draw();changed()}})},'↓'),
+   h('button',{type:'button',class:'mini x',title:'Hapus',onclick:stop(()=>{if(confirm('Hapus “'+title.textContent+'”?')){a.splice(i,1);draw();changed()}})},'🗑'));
+  const body=h('div',{class:'body'},f.fields.map(sf=>field(it,sf)));
+  body.addEventListener('input',upd);
+  box.append(h('details',{class:'card',open:a.length<=5},h('summary',{},title,acts),body))});
+  box.append(h('button',{type:'button',class:'btn sm add',onclick:()=>{a.push(JSON.parse(JSON.stringify(f.new)));draw();changed();const d=box.querySelectorAll(':scope>details');const last=d[d.length-1];last.open=true;last.scrollIntoView({block:'center'})}},f.addText||'+ Tambah'))};
+ draw();return box}
+
+/* ============ HALAMAN ============ */
+function openPage(id){
+ S.page=id;document.body.classList.remove('nav');
+ const pg=PAGES.find(p=>p.id===id),ed=$('#editor');ed.replaceChildren();
+ if(!pg){settingsPage(ed)}
+ else{ed.append(h('h1',{},pg.icon+' '+pg.label),h('p',{class:'desc'},pg.desc));
+  pg.fields.forEach(f=>ed.append(f.t==='group'?h('div',{class:'group'},f.label):field(S.content,f)))}
+ drawNav();window.scrollTo(0,0);scrollPv()}
+function drawNav(){
+ const n=$('#nav');n.replaceChildren(...PAGES.map(p=>h('button',{class:S.page===p.id?'on':'',onclick:()=>openPage(p.id)},h('span',{},p.icon),p.label)),h('hr'),
+  h('button',{class:S.page==='settings'?'on':'',onclick:()=>openPage('settings')},h('span',{},'🔑'),'Koneksi GitHub'))}
+function settingsPage(ed){
+ const c=S.cfg;ed.append(h('h1',{},'🔑 Koneksi GitHub'),h('p',{class:'desc'},'Repo tujuan penyimpanan. Token hanya tersimpan di browser ini.'),
+  h('div',{class:'field'},h('span',{class:'lbl'},'Repo'),h('div',{},`${c.owner}/${c.repo}`)),
+  h('div',{class:'field'},h('span',{class:'lbl'},'Branch'),h('div',{},c.branch)),
+  h('div',{class:'field'},h('span',{class:'lbl'},'Folder situs'),h('div',{},c.base||'(root repo)')),
+  h('div',{class:'mrow'},h('button',{class:'btn',onclick:()=>showLogin(true)},'Ubah koneksi'),
+   h('button',{class:'btn danger',onclick:()=>{if(dirty()&&!confirm('Ada perubahan yang belum disimpan. Tetap keluar?'))return;store.del('rz_cfg');location.reload()}},'Keluar (hapus token)')))}
+
+/* ============ PREVIEW ============ */
+let pvReady=false;const frame=$('#pv');
+window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data&&e.data.type==='preview-ready'){pvReady=true;sendPreview();scrollPv()}});
+function sendPreview(){if(!pvReady||!S.content||!S.pv)return;frame.contentWindow.postMessage({type:'content',content:S.content,assets:S.media},location.origin)}
+function scrollPv(){const pg=PAGES.find(p=>p.id===S.page);if(pvReady&&pg)frame.contentWindow.postMessage({type:'scroll',id:pg.anchor},location.origin)}
+function layoutPv(){
+ const w=$('#pvwrap'),W=w.clientWidth,H=w.clientHeight;if(!W)return;
+ if(S.pvDesktop){const sc=W/1100;frame.style.width='1100px';frame.style.height=(H/sc)+'px';frame.style.transform=`scale(${sc})`}
+ else{frame.style.width=W+'px';frame.style.height=H+'px';frame.style.transform='none'}
+ $('#pvMode').textContent='Tampilan: '+(S.pvDesktop?'Desktop':'Mobile')}
+function setPv(on){S.pv=on;document.body.classList.toggle('pv',on);if(on){layoutPv();sendPreview();scrollPv()}}
+$('#prevBtn').onclick=()=>setPv(!S.pv);$('#pvClose').onclick=()=>setPv(false);
+$('#pvMode').onclick=()=>{S.pvDesktop=!S.pvDesktop;layoutPv()};
+window.addEventListener('resize',()=>S.pv&&layoutPv());
+$('#menuBtn').onclick=()=>document.body.classList.toggle('nav');
+$('#saveBtn').onclick=save;
+
+/* ============ LOGIN & START ============ */
+function showLogin(editing){
+ $('#app').hidden=true;$('#login').hidden=false;$('#lcancel').hidden=!editing;$('#lerr').hidden=true;
+ const c=S.cfg||JSON.parse(store.get('rz_cfg')||'null')||{};
+ $('#c_owner').value=c.owner||'';$('#c_repo').value=c.repo||'';$('#c_branch').value=c.branch||'main';$('#c_base').value=c.base||'';$('#c_token').value=c.token||''}
+$('#lcancel').onclick=()=>{$('#login').hidden=true;$('#app').hidden=false};
+$('#lform').addEventListener('submit',async e=>{
+ e.preventDefault();const btn=$('#lbtn'),err=$('#lerr');err.hidden=true;btn.disabled=true;btn.textContent='Menghubungkan…';
+ const prev=S.cfg;
+ S.cfg={owner:$('#c_owner').value.trim(),repo:$('#c_repo').value.trim().replace(/\.git$/,''),branch:$('#c_branch').value.trim()||'main',base:$('#c_base').value.trim(),token:$('#c_token').value.trim()};
+ try{const r=await gh('');if(r.permissions&&r.permissions.push===false)throw new Error('Token hanya punya akses baca. Butuh “Contents: Read and write”.');
+  await loadContent();store.set('rz_cfg',JSON.stringify(S.cfg));start()}
+ catch(ex){err.textContent=ex.message;err.hidden=false;if(prev)S.cfg=prev;else S.cfg=null}
+ btn.disabled=false;btn.textContent='Masuk'});
+function start(){
+ $('#login').hidden=true;$('#app').hidden=false;
+ S.page='general';setPv(innerWidth>=1280);changed();openPage('general')}
+(async function init(){
+ const raw=store.get('rz_cfg');if(!raw)return showLogin(false);
+ try{S.cfg=JSON.parse(raw);await loadContent();start()}
+ catch(ex){showLogin(false);$('#lerr').textContent=ex.message;$('#lerr').hidden=false;S.cfg=null}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "title": "Reza Pamvngkas — A sarcastic little corner of the internet",
+    "description": "Reza Pamvngkas — developer, designer, problem solver. A sarcastic little corner of the internet."
+  },
+  "cv": {
+    "text": "Download CV",
+    "url": ""
+  },
+  "hero": {
+    "tag": "HEY. YOU FOUND ME.",
+    "name": "REZA\nPAMVNGKAS.",
+    "paragraphs": [
+      "I’m probably not the best. But hey, at least I know what I’m doing. Sometimes.",
+      "I make things. Sometimes they actually work."
+    ],
+    "marker": "Developer. Designer. Problem solver. Occasional overthinker.",
+    "location": "Based in Indonesia. Mentally somewhere else.",
+    "btn_text": "Explore my questionable achievements",
+    "btn_href": "#projects",
+    "image": "assets/header.png",
+    "image_alt": "Black and white ink sketch of Reza, eyes covered by a censor box",
+    "burst": "Somewhere between genius and what the heck.",
+    "caption": "↑ Yes, that’s supposed to be me. Don’t judge."
+  },
+  "about": {
+    "title": "So, who am I?",
+    "paragraphs": [
+      "Just a guy who enjoys building things, breaking things, and occasionally fixing the things he broke.",
+      "Interested in technology, software, design, business, and figuring out how stuff works.",
+      "I don’t really have a master plan. I just learn things, try things, mess things up, and somehow figure things out along the way."
+    ],
+    "facts_tag": "A FEW USELESS FACTS ABOUT ME",
+    "facts": [
+      "Based in Indonesia.",
+      "Self-taught developer.",
+      "Likes building things from scratch.",
+      "Has too many ideas. Send help.",
+      "Learns by doing. Occasionally by making mistakes.",
+      "Can turn “I wonder if this works” into an unnecessarily long project."
+    ]
+  },
+  "projects": {
+    "title": "LOOK! I ACTUALLY MADE SOMETHING.",
+    "marker": "Some are finished. Some are not. We’re all a work in progress.",
+    "intro": "A collection of things I’ve built, experimented with, designed, or spent an unreasonable amount of time thinking about.",
+    "items": [
+      {
+        "name": "ADSPACE",
+        "url": "",
+        "desc": "A little web studio focused on building clean, affordable websites and landing pages.",
+        "status": "Status: Building."
+      },
+      {
+        "name": "VERA",
+        "url": "",
+        "desc": "A product identity and authentication platform concept for manufacturing businesses.",
+        "status": "Status: In Development."
+      },
+      {
+        "name": "WORKKIT SERVICE",
+        "url": "",
+        "desc": "An offline-first service management app concept for independent technicians.",
+        "status": "Status: Concept / Experiment."
+      }
+    ],
+    "note": "Not everything here is a success story. Some are still fighting for their lives."
+  },
+  "skills": {
+    "title": "THINGS I CAN DO (WITHOUT PANICKING).",
+    "intro": "Not a list of superpowers. Just things I’ve learned, used, broken, and occasionally mastered.",
+    "groups": [
+      { "name": "DEVELOPMENT", "chips": ["HTML & CSS", "JavaScript", "PHP", "Laravel"] },
+      { "name": "DESIGN & CREATIVE", "chips": ["CorelDRAW", "Adobe Photoshop", "Adobe Premiere Pro", "Graphic Design", "Logo & Apparel Design"] },
+      { "name": "BUSINESS & OPERATIONS", "chips": ["Operations Management", "Team Supervision", "Recruitment & Training", "Inventory & Purchasing", "Payroll & Administration", "Product Development"] },
+      { "name": "MANUFACTURING", "chips": ["Quality Control", "Good Manufacturing Practices (GMP)", "Occupational Health & Safety (K3)", "Halal Procedures", "Production Layout & Process Improvement"] }
+    ],
+    "super_tag": "THE ACTUAL SUPERPOWER",
+    "super_big": "Adaptability. Improvisation.",
+    "super_text": "Learning things without waiting for someone to explain them first.",
+    "super_note": "Jack of some trades. Master of figuring things out."
+  },
+  "experience": {
+    "title": "PLACES WHERE I WAS USEFUL.",
+    "intro": "I’ve worked with people, businesses, products, processes, and probably more spreadsheets than any human should.",
+    "stat_big": "50+",
+    "stat_text": "employees by 2023. Started as number one.",
+    "jobs": [
+      {
+        "title": "SUPERVISOR",
+        "orgs": [
+          { "name": "CV Dwimanunggal Indonesia", "url": "" },
+          { "name": "PT Dwimanunggal Indonesia Sejahtera", "url": "" }
+        ],
+        "period": "2020 — 2025",
+        "size": "s4",
+        "paragraphs": [
+          "Joined as the first employee and grew alongside the business, working closely with its founders and co-founder.",
+          "Contributed to business operations and organizational growth, helping support a workforce of 50+ employees by 2023."
+        ],
+        "list_intro": "My responsibilities included:",
+        "list": [
+          "Supervising teams and improving work methods.",
+          "Recruitment, interviews, onboarding, and training.",
+          "Inventory, purchasing, and quality control.",
+          "Payroll and administrative support.",
+          "Product development and production operations.",
+          "Manufacturing facility layout and workflow planning.",
+          "K3, halal procedures, and GMP implementation."
+        ],
+        "note": "Started as employee number one. Somehow ended up helping keep the whole thing running."
+      },
+      {
+        "title": "DATA RESEARCH & ANALYSIS",
+        "orgs": [{ "name": "Confidential Organization", "url": "" }],
+        "period": "2012 — 2014",
+        "size": "s3",
+        "paragraphs": ["Worked independently on survey-related research, respondent analysis, and sensitive data projects."],
+        "list_intro": "",
+        "list": [],
+        "note": "Some details are better left off the internet. You’re welcome."
+      },
+      {
+        "title": "FREELANCE & INDEPENDENT WORK",
+        "orgs": [],
+        "period": "2015 — 2019",
+        "size": "s3",
+        "paragraphs": [
+          "Worked on graphic design, logo design, apparel graphics, screen printing, and creative projects for small businesses, organizations, and communities.",
+          "Also experimented with an independent culinary business."
+        ],
+        "list_intro": "",
+        "list": [],
+        "note": "Basically, I was trying things. A lot of things."
+      }
+    ]
+  },
+  "now": {
+    "title": "CURRENTLY WASTING TIME ON",
+    "items": [
+      { "title": "BUILDING SOFTWARE.", "text": "Because apparently, having ideas isn’t enough. Now I have to build them." },
+      { "title": "LEARNING JAPANESE.", "text": "こんにちは. That’s about as far as my confidence goes." },
+      { "title": "EXPLORING RANDOM IDEAS.", "text": "Some make sense. Some probably shouldn’t exist." },
+      { "title": "TRYING TO FINISH UNFINISHED PROJECTS.", "text": "A never-ending battle between ambition and procrastination." }
+    ],
+    "show_updated": true,
+    "auto_date": true,
+    "updated": "2026-11-07"
+  },
+  "contact": {
+    "title": "Find me, or don’t.",
+    "intro": "I’m not particularly hard to find. Just don’t expect me to be interesting 24/7.",
+    "social_title": "AROUND THE INTERNET",
+    "socials": [
+      { "label": "Instagram", "url": "https://instagram.com/rezapamvngkas" },
+      { "label": "Threads", "url": "https://www.threads.net/@rezapamvngkas" },
+      { "label": "GitHub", "url": "https://github.com/rezaction" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/rezapamvngkas" }
+    ],
+    "email_title": "EMAIL",
+    "email": "rezaction@proton.me",
+    "note": "For projects, collaborations, questions, or sending me money. Mostly the first three.",
+    "hire_text": "Hire me"
+  },
+  "footer": {
+    "title": "That’s it. You’ve seen enough.",
+    "marker": "Now go do something useful.",
+    "text": "…Unless you have a project for me. Then stay.",
+    "signature": "— Reza, probably."
+  },
+  "egg": {
+    "image": "assets/easter-egg.png",
+    "alt": "Reza peeking over the box, giving the middle finger",
+    "title": "FUCK OFF.\nDO SOMETHING USEFUL.",
+    "line1": "You really clicked that many times?",
+    "line2": "— Reza, definitely."
+  }
+}
