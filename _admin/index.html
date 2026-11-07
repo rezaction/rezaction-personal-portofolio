@@ -257,7 +257,7 @@ window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.
 /* ============ GITHUB ============ */
 async function gh(path,body,method){
  const c=S.cfg,m=method||(body?'POST':'GET'),bust=m==='GET'?(path.includes('?')?'&':'?')+'_='+Date.now():'';
- let res;try{res=await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}/${path}${bust}`,{method:m,
+ let res;try{res=await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}${path?'/'+path:''}${bust}`,{method:m,
   headers:{Authorization:'Bearer '+c.token,Accept:'application/vnd.github+json',...(body?{'Content-Type':'application/json'}:{})},body:body?JSON.stringify(body):undefined})}
  catch(e){throw new Error('Tidak bisa menghubungi GitHub ('+e.message+'). Cek internet, matikan ad-blocker/Shields untuk situs ini, lalu coba lagi.')}
  if(!res.ok){let m='';try{m=(await res.json()).message}catch(e){}
@@ -408,6 +408,13 @@ $('#menuBtn').onclick=()=>document.body.classList.toggle('nav');
 $('#saveBtn').onclick=save;
 
 /* ============ LOGIN & START ============ */
+async function diag(c){
+ const t=async(name,url,opt)=>{try{const r=await fetch(url,opt);return name+': OK (HTTP '+r.status+')'}catch(e){return name+': GAGAL ('+e.message+')'}};
+ const auth={headers:{Authorization:'Bearer '+c.token}};
+ return [await t('1. GitHub terjangkau (tanpa token)','https://api.github.com/zen'),
+  await t('2. Dengan token (cek izin CORS)','https://api.github.com/rate_limit',auth),
+  await t('3. Akses repo',`https://api.github.com/repos/${c.owner}/${c.repo}`,auth)].join('\n')}
+
 function showLogin(editing){
  $('#app').hidden=true;$('#login').hidden=false;$('#lcancel').hidden=!editing;$('#lerr').hidden=true;
  const c=S.cfg||JSON.parse(store.get('rz_cfg')||'null')||{};
@@ -419,7 +426,7 @@ $('#lform').addEventListener('submit',async e=>{
  S.cfg={owner:$('#c_owner').value.trim(),repo:$('#c_repo').value.trim().replace(/\.git$/,''),branch:$('#c_branch').value.trim()||'main',base:$('#c_base').value.trim(),token:$('#c_token').value.trim()};
  try{const r=await gh('');if(r.permissions&&r.permissions.push===false)throw new Error('Token hanya punya akses baca. Butuh “Contents: Read and write”.');
   await loadContent();store.set('rz_cfg',JSON.stringify(S.cfg));start()}
- catch(ex){err.textContent=ex.message;err.hidden=false;if(prev)S.cfg=prev;else S.cfg=null}
+ catch(ex){err.textContent=ex.message;err.hidden=false;const cfg=S.cfg;if(prev)S.cfg=prev;else S.cfg=null;if(/Tidak bisa menghubungi/.test(ex.message)){err.textContent+='\n\nDiagnosis:\n'+await diag(cfg)}}
  btn.disabled=false;btn.textContent='Masuk'});
 function start(){
  $('#login').hidden=true;$('#app').hidden=false;
