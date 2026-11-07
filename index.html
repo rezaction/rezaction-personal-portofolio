@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reza Pamvngkas — A sarcastic little corner of the internet</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6f6f4;--ink:#111;--grey:#d9d9d6;--dot:rgba(0,0,0,.16);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#121212;--ink:#f2f2ef;--grey:#2a2a2a;--dot:rgba(255,255,255,.14)}}
+:root[data-theme="dark"]{--paper:#121212;--ink:#f2f2ef;--grey:#2a2a2a;--dot:rgba(255,255,255,.14)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Courier Prime','Courier New',monospace;font-size:17px;line-height:1.55;background-image:radial-gradient(var(--dot) 1.2px,transparent 1.4px);background-size:9px 9px}
+h1,h2,h3{font-family:Bangers,Impact,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1;margin:0}
+.mk{font-family:'Permanent Marker','Comic Sans MS',cursive}
+main{max-width:1120px;margin:0 auto;padding:28px 18px 80px}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:30px;margin-bottom:30px}
+.box{position:relative;padding:26px 26px 28px;isolation:isolate}
+.box::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--paper);border:5px solid var(--ink);box-shadow:9px 9px 0 var(--ink);filter:url(#rough)}
+.box.inv::before{background:var(--ink)}
+.box.inv{color:var(--paper)}
+.box.inv .note{border-color:var(--paper)}
+.s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}.s6{grid-column:span 6}
+.t1{transform:rotate(-.6deg)}.t2{transform:rotate(.5deg)}.t3{transform:rotate(-.3deg)}
+h2{font-size:clamp(34px,5vw,54px);margin-bottom:12px}
+h3{font-size:28px;margin-bottom:4px}
+p{margin:0 0 12px}
+.note{font-family:'Permanent Marker',cursive;font-size:15px;border-top:3px dashed var(--ink);padding-top:10px;margin:16px 0 0;transform:rotate(-.8deg)}
+.tag{display:inline-block;font-family:Bangers,sans-serif;font-size:20px;background:var(--ink);color:var(--paper);padding:2px 12px;transform:rotate(-2deg);margin-bottom:14px}
+.inv .tag{background:var(--paper);color:var(--ink)}
+ul{margin:0;padding-left:20px}li{margin:4px 0}
+/* hero */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:end;padding-bottom:0}
+.portrait{position:relative;align-self:end;margin-bottom:-4px}
+.ph{position:relative;max-width:400px;margin:0 auto;container-type:inline-size}
+.portrait img{display:block;width:100%}
+.hero h1{font-size:clamp(54px,10vw,118px);margin:6px 0 16px;text-shadow:4px 4px 0 var(--grey)}
+.burst{position:absolute;left:50%;top:35%;width:88%;z-index:2;background:var(--paper);border:3px solid var(--ink);padding:1px 6px;font-family:'Permanent Marker',cursive;text-align:center;white-space:nowrap;line-height:1.35;font-size:11px;font-size:3.05cqw;transform:translate(-50%,-50%) rotate(-1.5deg);filter:url(#rough)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .portrait img,:root:not([data-theme="light"]) .eimg{filter:invert(1)}}
+:root[data-theme="dark"] .portrait img,:root[data-theme="dark"] .eimg{filter:invert(1)}
+.cap{font-family:'Permanent Marker',cursive;font-size:14px;text-align:center;padding:8px 0 14px}
+.btns{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px}
+.btn{position:relative;font-family:Bangers,sans-serif;font-size:22px;letter-spacing:.04em;text-decoration:none;color:var(--ink);padding:8px 20px;isolation:isolate;display:inline-block}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;border:4px solid var(--ink);background:var(--paper);box-shadow:5px 5px 0 var(--ink);filter:url(#rough);transition:transform .12s,box-shadow .12s}
+.btn:hover::before,.btn:focus-visible::before{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
+.btn.solid{color:var(--paper)}.btn.solid::before{background:var(--ink)}
+.inv .btn{color:var(--ink)}.inv .btn::before{border-color:var(--paper);box-shadow:5px 5px 0 var(--paper)}
+a:focus-visible,.foot:focus-visible{outline:3px dashed var(--ink);outline-offset:4px}
+/* projects */
+.proj{border:4px solid var(--ink);padding:16px;background:var(--paper);filter:url(#rough);margin-top:6px}
+.inv .proj{border-color:var(--paper);background:var(--ink)}
+.status{font-family:'Permanent Marker',cursive;font-size:14px;margin-top:8px;display:inline-block;border:3px solid currentColor;padding:0 10px;transform:rotate(-2deg)}
+/* experience */
+.big{font-family:Bangers,sans-serif;font-size:clamp(90px,16vw,170px);line-height:.85;text-shadow:5px 5px 0 var(--grey)}
+.meta{font-size:14px;opacity:.8;margin-bottom:10px}
+.sk h3{font-size:24px;margin-top:14px;border-bottom:4px solid var(--ink);display:inline-block}
+.chips{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:8px}
+.chips span{border:3px solid var(--ink);padding:0 9px;font-size:14px;transform:rotate(calc(var(--r,0)*1deg))}
+.chips span:nth-child(2n){--r:-1.2}.chips span:nth-child(3n){--r:1.3}
+.cur p{margin:0 0 14px}.cur b{font-family:Bangers,sans-serif;font-size:24px;letter-spacing:.04em;font-weight:400;display:block}
+.links a{color:inherit;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:3px}
+a.lk{color:inherit;text-decoration:none;font-weight:700;padding:0 5px;margin-left:-5px}a.lk:hover,a.lk:focus-visible{background:var(--ink);color:var(--paper)}h3 a.lk{font-weight:inherit}a.lk.ext::after{content:" ↗"}
+.btn.sm{font-size:18px;padding:4px 14px;margin-top:14px}
+.big2{font-family:Bangers,sans-serif;font-size:clamp(30px,5vw,44px);line-height:1.05;margin:8px 0 14px}
+/* footer */
+.foot{text-align:center;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;padding:46px 20px}
+.foot h2{font-size:clamp(40px,8vw,84px)}
+.foot.hit{animation:shake .25s}
+@keyframes shake{25%{transform:translateX(-5px) rotate(-.5deg)}75%{transform:translateX(5px) rotate(.5deg)}}
+.egg{position:fixed;inset:0;z-index:50;display:flex;justify-content:center;align-items:center;padding:max(14px,env(safe-area-inset-top,0px)) 14px max(14px,env(safe-area-inset-bottom,0px));overflow:hidden;visibility:hidden;background:transparent;transition:background .4s,visibility 0s .4s}
+.egg.on{visibility:visible;background:color-mix(in srgb,var(--paper) 92%,transparent);transition:background .4s}
+.egg .win{--ew:max(150px,min(320px,64vw,calc((100vh - 300px)/.69)));--ew:max(150px,min(320px,64vw,calc((100dvh - 300px)/.69)));width:min(460px,100%);display:flex;flex-direction:column;align-items:center}
+.pk{width:100%;height:calc(var(--ew)*.69 + 10px);margin-bottom:-10px;overflow:hidden;display:flex;justify-content:center;align-items:flex-start;position:relative;z-index:1}
+.egg .msg{position:relative;width:100%;padding:24px 26px 18px;text-align:center;isolation:isolate;transform:rotate(-1.2deg);opacity:0;transition:opacity .3s;z-index:2}
+.egg.on .msg{opacity:1}
+.egg .msg::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--paper);border:5px solid var(--ink);box-shadow:8px 8px 0 var(--ink);filter:url(#rough)}
+.egg h2{font-size:clamp(32px,6vw,52px);margin:0}
+.x{position:absolute;top:-12px;right:-12px;border:3px solid var(--ink);background:var(--ink);color:var(--paper);font-family:Bangers;font-size:20px;padding:0 10px;cursor:pointer}
+.eimg{display:block;flex:none;width:var(--ew);height:auto;margin-left:12%;transform:translateY(105%);transition:transform 1.3s cubic-bezier(.2,.8,.2,1) .25s}
+.egg.on .eimg{transform:none}
+@media(max-width:780px){
+ body{font-size:16px}.grid{gap:26px;grid-template-columns:1fr}.s2,.s3,.s4,.s6{grid-column:1}
+ .hero{grid-template-columns:1fr}.portrait{order:-1}.t1,.t2,.t3{transform:none}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.eimg{transition:none}.foot.hit{animation:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7"/></filter></svg>
+
+<main>
+<!-- HERO -->
+<section class="grid">
+ <div class="box s6 hero t1">
+  <div style="padding-bottom:26px">
+   <span class="tag">HEY. YOU FOUND ME.</span>
+   <h1>REZA<br>PAMVNGKAS.</h1>
+   <p>I’m probably not the best. But hey, at least I know what I’m doing. Sometimes.</p>
+   <p>I make things. Sometimes they actually work.</p>
+   <p class="mk" style="font-size:19px;margin:0">Developer. Designer. Problem solver. Occasional overthinker.</p>
+   <p style="margin-top:12px;opacity:.85">Based in Indonesia. Mentally somewhere else.</p>
+   <div class="btns"><a class="btn solid" href="#projects">Explore my questionable achievements</a><a class="btn" href="#" onclick="return false">Download CV</a></div>
+  </div>
+  <div class="portrait"><div class="ph"><img src="assets/header.png" alt="Black and white ink sketch of Reza, eyes covered by a censor box"><div class="burst">Somewhere between genius and what the heck.</div></div><div class="cap">↑ Yes, that’s supposed to be me. Don’t judge.</div></div>
+ </div>
+</section>
+
+<!-- ABOUT -->
+<section class="grid" id="about">
+ <div class="box s3 t2">
+  <h2>So, who am I?</h2>
+  <p>Just a guy who enjoys building things, breaking things, and occasionally fixing the things he broke.</p>
+  <p>Interested in technology, software, design, business, and figuring out how stuff works.</p>
+  <p>I don’t really have a master plan. I just learn things, try things, mess things up, and somehow figure things out along the way.</p>
+ </div>
+ <div class="box s3 inv t3">
+  <span class="tag">A FEW USELESS FACTS ABOUT ME</span>
+  <ul>
+   <li>Based in Indonesia.</li><li>Self-taught developer.</li><li>Likes building things from scratch.</li><li>Has too many ideas. Send help.</li><li>Learns by doing. Occasionally by making mistakes.</li><li>Can turn “I wonder if this works” into an unnecessarily long project.</li>
+  </ul>
+ </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="grid" id="projects">
+ <div class="box s6 t1">
+  <h2>LOOK! I ACTUALLY MADE SOMETHING.</h2>
+  <p class="mk" style="font-size:18px">Some are finished. Some are not. We’re all a work in progress.</p>
+  <p>A collection of things I’ve built, experimented with, designed, or spent an unreasonable amount of time thinking about.</p>
+  <div class="grid" style="margin:18px 0 0;gap:22px">
+   <div class="proj s2"><h3><a class="lk ext" href="#" target="_blank" rel="noopener">ADSPACE</a></h3><p>A little web studio focused on building clean, affordable websites and landing pages.</p><span class="status">Status: Building.</span></div>
+   <div class="proj s2"><h3><a class="lk ext" href="#" target="_blank" rel="noopener">VERA</a></h3><p>A product identity and authentication platform concept for manufacturing businesses.</p><span class="status">Status: In Development.</span></div>
+   <div class="proj s2"><h3><a class="lk ext" href="#" target="_blank" rel="noopener">WORKKIT SERVICE</a></h3><p>An offline-first service management app concept for independent technicians.</p><span class="status">Status: Concept / Experiment.</span></div>
+  </div>
+  <p class="note">Not everything here is a success story. Some are still fighting for their lives.</p>
+ </div>
+</section>
+
+<!-- SKILLS -->
+<section class="grid" id="skills">
+ <div class="box s4 sk t2">
+  <h2>THINGS I CAN DO (WITHOUT PANICKING).</h2>
+  <p>Not a list of superpowers. Just things I’ve learned, used, broken, and occasionally mastered.</p>
+  <h3>DEVELOPMENT</h3><div class="chips"><span>HTML &amp; CSS</span><span>JavaScript</span><span>PHP</span><span>Laravel</span></div>
+  <h3>DESIGN &amp; CREATIVE</h3><div class="chips"><span>CorelDRAW</span><span>Adobe Photoshop</span><span>Adobe Premiere Pro</span><span>Graphic Design</span><span>Logo &amp; Apparel Design</span></div>
+  <h3>BUSINESS &amp; OPERATIONS</h3><div class="chips"><span>Operations Management</span><span>Team Supervision</span><span>Recruitment &amp; Training</span><span>Inventory &amp; Purchasing</span><span>Payroll &amp; Administration</span><span>Product Development</span></div>
+  <h3>MANUFACTURING</h3><div class="chips"><span>Quality Control</span><span>Good Manufacturing Practices (GMP)</span><span>Occupational Health &amp; Safety (K3)</span><span>Halal Procedures</span><span>Production Layout &amp; Process Improvement</span></div>
+ </div>
+ <div class="box s2 inv t3" style="align-self:start">
+  <span class="tag">THE ACTUAL SUPERPOWER</span>
+  <div class="big2">Adaptability. Improvisation.</div>
+  <p>Learning things without waiting for someone to explain them first.</p>
+  <p class="note">Jack of some trades. Master of figuring things out.</p>
+ </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="grid" id="experience">
+ <div class="box s6 t1"><h2>PLACES WHERE I WAS USEFUL.</h2><p>I’ve worked with people, businesses, products, processes, and probably more spreadsheets than any human should.</p></div>
+ <div class="box s2 inv t2" style="display:flex;flex-direction:column;justify-content:center">
+  <div class="big">50+</div><p class="mk" style="font-size:18px;margin:0">employees by 2023. Started as number one.</p>
+ </div>
+ <div class="box s4 t3">
+  <h3>SUPERVISOR</h3>
+  <div class="meta"><a class="lk ext" href="#" target="_blank" rel="noopener">CV Dwimanunggal Indonesia</a> / <a class="lk ext" href="#" target="_blank" rel="noopener">PT Dwimanunggal Indonesia Sejahtera</a> · 2020 — 2025</div>
+  <p>Joined as the first employee and grew alongside the business, working closely with its founders and co-founder.</p>
+  <p>Contributed to business operations and organizational growth, helping support a workforce of 50+ employees by 2023.</p>
+  <p style="margin-bottom:4px">My responsibilities included:</p>
+  <ul><li>Supervising teams and improving work methods.</li><li>Recruitment, interviews, onboarding, and training.</li><li>Inventory, purchasing, and quality control.</li><li>Payroll and administrative support.</li><li>Product development and production operations.</li><li>Manufacturing facility layout and workflow planning.</li><li>K3, halal procedures, and GMP implementation.</li></ul>
+  <p class="note">Started as employee number one. Somehow ended up helping keep the whole thing running.</p>
+ </div>
+ <div class="box s3 t2">
+  <h3>DATA RESEARCH &amp; ANALYSIS</h3><div class="meta">Confidential Organization · 2012 — 2014</div>
+  <p>Worked independently on survey-related research, respondent analysis, and sensitive data projects.</p>
+  <p class="note">Some details are better left off the internet. You’re welcome.</p>
+ </div>
+ <div class="box s3 t1">
+  <h3>FREELANCE &amp; INDEPENDENT WORK</h3><div class="meta">2015 — 2019</div>
+  <p>Worked on graphic design, logo design, apparel graphics, screen printing, and creative projects for small businesses, organizations, and communities.</p>
+  <p>Also experimented with an independent culinary business.</p>
+  <p class="note">Basically, I was trying things. A lot of things.</p>
+ </div>
+</section>
+
+<!-- CURRENT -->
+<section class="grid" id="now">
+ <div class="box s6 cur inv t3">
+  <h2>CURRENTLY WASTING TIME ON</h2><br>
+  <div class="grid" style="margin:0;gap:22px 40px;grid-template-columns:repeat(2,1fr)">
+   <p><b>BUILDING SOFTWARE.</b>Because apparently, having ideas isn’t enough. Now I have to build them.</p>
+   <p><b>LEARNING JAPANESE.</b>こんにちは. That’s about as far as my confidence goes.</p>
+   <p><b>EXPLORING RANDOM IDEAS.</b>Some make sense. Some probably shouldn’t exist.</p>
+   <p><b>TRYING TO FINISH UNFINISHED PROJECTS.</b>A never-ending battle between ambition and procrastination.</p>
+  </div>
+  <p class="note">Last updated: <span id="d"></span></p>
+ </div>
+</section>
+
+<!-- CONTACT -->
+<section class="grid" id="contact">
+ <div class="box s6 links t2">
+  <h2>Find me, or don’t.</h2>
+  <p>I’m not particularly hard to find. Just don’t expect me to be interesting 24/7.</p>
+  <div class="grid" style="margin:14px 0 0;gap:20px">
+   <div class="s3"><h3>AROUND THE INTERNET</h3><ul>
+    <li><a class="lk ext" href="https://instagram.com/rezapamvngkas" target="_blank" rel="noopener">Instagram</a></li><li><a class="lk ext" href="https://www.threads.net/@rezapamvngkas" target="_blank" rel="noopener">Threads</a></li><li><a class="lk ext" href="https://github.com/rezaction" target="_blank" rel="noopener">GitHub</a></li><li><a class="lk ext" href="https://www.linkedin.com/in/rezapamvngkas" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+   <div class="s3"><h3>EMAIL</h3><p><a class="lk" href="mailto:rezaction@proton.me">rezaction@proton.me</a></p></div>
+  </div>
+  <p class="note">For projects, collaborations, questions, or sending me money. Mostly the first three.</p>
+  <div class="btns"><a class="btn solid" href="mailto:rezaction@proton.me">Hire me</a><a class="btn" href="#" onclick="return false">Download CV</a></div>
+ </div>
+</section>
+
+<!-- FOOTER -->
+<section class="grid" style="margin-bottom:0">
+ <div class="box s6 foot inv t1" id="foot" role="button" tabindex="0" aria-label="Footer">
+  <h2>That’s it. You’ve seen enough.</h2>
+  <p class="mk" style="font-size:22px;margin:14px 0 6px">Now go do something useful.</p>
+  <p>…Unless you have a project for me. Then stay.</p>
+  <p class="mk" style="margin:0">— Reza, probably.</p>
+ </div>
+</section>
+</main>
+
+<!-- EASTER EGG -->
+<div class="egg" id="egg" role="dialog" aria-label="Easter egg">
+ <div class="win">
+  <div class="pk"><img class="eimg" src="assets/easter-egg.png" alt="Reza peeking over the box, giving the middle finger"></div>
+  <div class="msg"><button class="x" id="x" aria-label="Close">X</button>
+   <h2>FUCK OFF.<br>DO SOMETHING USEFUL.</h2>
+   <p class="mk" style="margin:12px 0 4px">You really clicked that many times?</p>
+   <p class="mk" style="margin:0">— Reza, definitely.</p></div>
+ </div>
+</div>
+
+<script>
+document.getElementById('d').textContent=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+var f=document.getElementById('foot'),e=document.getElementById('egg'),n=0,t;
+function hit(){n++;f.classList.remove('hit');void f.offsetWidth;f.classList.add('hit');clearTimeout(t);t=setTimeout(function(){n=0},2500);if(n>=5){e.classList.add('on');n=0}}
+f.addEventListener('click',hit);
+f.addEventListener('keydown',function(k){if(k.key==='Enter'||k.key===' '){k.preventDefault();hit()}});
+function close(){e.classList.remove('on')}
+document.getElementById('x').addEventListener('click',close);
+e.addEventListener('click',function(k){if(k.target===e||k.target.classList.contains('win'))close()});
+document.addEventListener('keydown',function(k){if(k.key==='Escape')close()});
+document.querySelectorAll('a[href="#"]').forEach(function(a){a.addEventListener('click',function(k){k.preventDefault()})});
+</script>
+</body>
+</html>
