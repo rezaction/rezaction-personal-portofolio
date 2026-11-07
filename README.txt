@@ -34,3 +34,6 @@ KEAMANAN
 CATATAN
 - Membuka index.html langsung dari file (double-click) tidak akan menampilkan isi karena browser memblokir fetch. Tes lewat hosting, atau: python3 -m http.server di folder ini.
 - Konten dirender oleh JavaScript (Google tetap bisa membacanya).
+
+
+.
