@@ -68,6 +68,21 @@ a:focus-visible,.foot:focus-visible{outline:3px dashed var(--ink);outline-offset
 a.lk{color:inherit;text-decoration:none;font-weight:700;padding:0 5px;margin-left:-5px}a.lk:hover,a.lk:focus-visible{background:var(--ink);color:var(--paper)}h3 a.lk{font-weight:inherit}a.lk.ext::after{content:" ↗"}
 .btn.sm{font-size:18px;padding:4px 14px;margin-top:14px}
 .big2{font-family:Bangers,sans-serif;font-size:clamp(30px,5vw,44px);line-height:1.05;margin:8px 0 14px}
+.xcol{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:1fr;gap:30px;align-self:stretch}
+.xf{grid-column:1/-1}
+.xb{display:flex;flex-direction:column}.xb .note{margin-top:auto}.xb ul{margin-bottom:16px}
+.sk{display:flex;flex-direction:column}
+.sk h3{margin-top:auto;align-self:flex-start}
+.sk .chips{margin-bottom:14px}.sk .chips:last-child{margin-bottom:0}
+.sidecol{display:flex;flex-direction:column;gap:30px;align-self:stretch}
+.sidecol>.box:last-child{flex:1;display:flex;flex-direction:column}
+.sidecol>.box:last-child .tag{align-self:flex-start}
+.sidecol>.box:last-child .osnote{margin-top:auto}
+.osi:last-of-type{margin-bottom:20px}
+.osi h3{font-size:26px;margin:0 0 2px}.osi p{margin:0}
+.osi+.osi{border-top:3px dashed var(--ink);padding-top:12px;margin-top:12px}
+.osnote{position:relative;font-family:'Permanent Marker',cursive;font-size:16px;text-align:center;border:4px solid var(--ink);padding:10px 12px;margin-top:20px;transform:rotate(-1.2deg);filter:url(#rough)}
+.punch{font-family:'Permanent Marker',cursive;font-size:20px;line-height:1.25;border-top:3px dashed var(--paper);padding-top:12px;margin:auto 0 0;transform:rotate(-.8deg)}
 /* footer */
 .foot{text-align:center;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;padding:46px 20px}
 .foot h2{font-size:clamp(40px,8vw,84px)}
@@ -85,6 +100,7 @@ a.lk{color:inherit;text-decoration:none;font-weight:700;padding:0 5px;margin-lef
 .eimg{display:block;flex:none;width:var(--ew);height:auto;margin-left:12%;transform:translateY(105%);transition:transform 1.3s cubic-bezier(.2,.8,.2,1) .25s}
 .egg.on .eimg{transform:none}
 @media(max-width:780px){
+ .xcol{grid-template-columns:1fr;grid-template-rows:none}
  body{font-size:16px}.grid{gap:26px;grid-template-columns:1fr}.nowgrid{grid-template-columns:1fr;gap:16px}.tag.corner{right:-4px;top:-14px}.s2,.s3,.s4,.s6{grid-column:1}
  .hero{grid-template-columns:1fr}.portrait{order:-1}.t1,.t2,.t3{transform:none}
 }
@@ -141,19 +157,28 @@ function projects(c){var p=c.projects||{};
 function skills(c){var s=c.skills||{};
  return '<section class="grid" id="skills"><div class="box s4 sk t2"><h2>'+esc(s.title)+'</h2>'+(s.intro?'<p>'+esc(s.intro)+'</p>':'')
  +arr(s.groups).map(function(g){return '<h3>'+esc(g.name)+'</h3><div class="chips">'+arr(g.chips).map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div>'}).join('')
- +'</div><div class="box s2 inv t3" style="align-self:start">'+(s.super_tag?'<span class="tag">'+esc(s.super_tag)+'</span>':'')
+ +'</div><div class="s2 sidecol"><div class="box inv t3">'+(s.super_tag?'<span class="tag">'+esc(s.super_tag)+'</span>':'')
  +(s.super_big?'<div class="big2">'+esc(s.super_big)+'</div>':'')+(s.super_text?'<p>'+esc(s.super_text)+'</p>':'')
- +(s.super_note?'<p class="note">'+esc(s.super_note)+'</p>':'')+'</div></section>'}
+ +(s.super_note?'<p class="note">'+esc(s.super_note)+'</p>':'')+'</div>'+osbox(s)+'</div></section>'}
+function osbox(s){var it=arr(s.os_items).filter(function(i){return i&&(i.title||i.text)});
+ if(!s.os_big&&!it.length)return '';
+ return '<div class="box t2">'+(s.os_tag?'<span class="tag">'+esc(s.os_tag)+'</span>':'')
+  +(s.os_big?'<div class="big2">'+esc(s.os_big)+'</div>':'')
+  +it.map(function(i,n){return '<div class="osi"><h3>'+(n+1)+'. '+esc(i.title)+'</h3>'+(i.text?'<p>'+esc(i.text)+'</p>':'')+'</div>'}).join('')
+  +(s.os_note?'<div class="osnote">'+esc(s.os_note)+'</div>':'')+'</div>'}
 
 function experience(c){var e=c.experience||{};
  var out='<section class="grid" id="experience"><div class="box s6 t1"><h2>'+esc(e.title)+'</h2>'+(e.intro?'<p>'+esc(e.intro)+'</p>':'')+'</div>';
- if(e.stat_big)out+='<div class="box s2 inv t2" style="display:flex;flex-direction:column;justify-content:center"><div class="big">'+esc(e.stat_big)+'</div><p class="mk" style="font-size:18px;margin:0">'+esc(e.stat_text)+'</p></div>';
- arr(e.jobs).forEach(function(j,i){
+ function job(j,i,cls){
   var orgs=arr(j.orgs).filter(function(o){return o&&o.name}).map(function(o){return ext(o.url,esc(o.name))}).join(' / ');
   var meta=orgs+(orgs&&j.period?' · ':'')+esc(j.period||'');
-  var size=/^s[2346]$/.test(j.size)?j.size:'s3';
-  out+='<div class="box '+size+' '+TILT[i%3]+'"><h3>'+esc(j.title)+'</h3>'+(meta?'<div class="meta">'+meta+'</div>':'')+ps(j.paragraphs)
-   +(j.list_intro?'<p style="margin-bottom:4px">'+esc(j.list_intro)+'</p>':'')+ul(j.list)+(j.note?'<p class="note">'+esc(j.note)+'</p>':'')+'</div>'});
+  return '<div class="box xb '+cls+' '+TILT[i%3]+'"><h3>'+esc(j.title)+'</h3>'+(meta?'<div class="meta">'+meta+'</div>':'')+ps(j.paragraphs)
+   +(j.list_intro?'<p style="margin-bottom:4px">'+esc(j.list_intro)+'</p>':'')+ul(j.list)+(j.note?'<p class="note">'+esc(j.note)+'</p>':'')+'</div>'}
+ var jobs=arr(e.jobs);
+ if(e.stat_big){
+  out+='<div class="box s2 inv t2" style="display:flex;flex-direction:column;justify-content:space-between">'+(e.stat_tag?'<span class="tag" style="align-self:flex-start">'+esc(e.stat_tag)+'</span>':'')+'<div class="big2">'+esc(e.stat_big)+'</div>'+ps(e.stat_paras)+(e.stat_note?'<p class="punch">'+esc(e.stat_note)+'</p>':'')+'</div>';
+  out+='<div class="s4 xcol">'+jobs.map(function(j,i){return job(j,i,/^s[23]$/.test(j.size)?'xh':'xf')}).join('')+'</div>'}
+ else jobs.forEach(function(j,i){out+=job(j,i,/^s[2346]$/.test(j.size)?j.size:'s3')});
  return out+'</section>'}
 
 function now(c){var n=c.now||{};

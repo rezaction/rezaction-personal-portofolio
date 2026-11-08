@@ -200,12 +200,19 @@ const PAGES=[
    new:{name:'KELOMPOK BARU',chips:[]},fields:[
     T('name','Nama kelompok'),{p:'chips',t:'chips',label:'Skill',hint:'Ketik lalu Enter. Bisa tempel beberapa sekaligus dipisah koma.'}]},
   {t:'group',label:'Kotak “superpower”'},
-  T('skills.super_tag','Label'),T('skills.super_big','Teks besar'),A('skills.super_text','Teks'),T('skills.super_note','Catatan')]},
- {id:'experience',icon:'💼',label:'Pengalaman',anchor:'experience',desc:'Riwayat kerja dan angka statistik.',fields:[
+  T('skills.super_tag','Label'),T('skills.super_big','Teks besar'),A('skills.super_text','Teks'),T('skills.super_note','Catatan'),
+  {t:'group',label:'Kotak “Personal Operating System”'},
+  T('skills.os_tag','Label kecil'),T('skills.os_big','Judul besar',{hint:'Kosongkan judul dan aturan untuk menyembunyikan kotak ini.'}),
+  {p:'skills.os_items',t:'items',label:'Aturan',noun:'Aturan',addText:'+ Tambah aturan',title:i=>i.title,new:{title:'ATURAN BARU.',text:''},fields:[T('title','Judul',{hint:'Nomor otomatis.'}),A('text','Teks')]},
+  T('skills.os_note','Punchline (dalam kotak)')]},
+ {id:'experience',icon:'💼',label:'Pengalaman',anchor:'experience',desc:'Riwayat kerja dan kotak “unofficial section”.',fields:[
   T('experience.title','Judul'),
   A('experience.intro','Pengantar'),
-  T('experience.stat_big','Angka besar',{hint:'Kosongkan untuk menyembunyikan kotak statistik.'}),
-  T('experience.stat_text','Teks angka'),
+  {t:'group',label:'Kotak “unofficial section”'},
+  T('experience.stat_tag','Label kecil'),
+  T('experience.stat_big','Judul besar',{hint:'Kosongkan untuk menyembunyikan kotak ini.'}),
+  L('experience.stat_paras','Paragraf',{multiline:true}),
+  T('experience.stat_note','Punchline'),
   {p:'experience.jobs',t:'items',label:'Pengalaman kerja',noun:'Pengalaman',addText:'+ Tambah pengalaman',title:i=>i.title,
    new:{title:'JUDUL / POSISI',orgs:[],period:'',size:'s3',paragraphs:[''],list_intro:'',list:[],note:''},fields:[
     T('title','Posisi / judul'),

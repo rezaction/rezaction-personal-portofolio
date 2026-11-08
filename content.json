@@ -140,13 +140,35 @@
     "super_tag": "THE ACTUAL SUPERPOWER",
     "super_big": "Adaptability. Improvisation.",
     "super_text": "Learning things without waiting for someone to explain them first.",
-    "super_note": "Jack of some trades. Master of figuring things out."
+    "super_note": "Jack of some trades. Master of figuring things out.",
+    "os_tag": "PERSONAL OPERATING SYSTEM",
+    "os_big": "THE DEFAULT SETTINGS.",
+    "os_items": [
+      {
+        "title": "FIGURE IT OUT.",
+        "text": "If nobody knows how, guess who’s learning."
+      },
+      {
+        "title": "MAKE IT WORK.",
+        "text": "Preferably without creating three new problems."
+      },
+      {
+        "title": "MAKE IT BETTER.",
+        "text": "If it can be improved, it’ll probably bother me."
+      }
+    ],
+    "os_note": "[NOT CONFIGURABLE. MOSTLY.]"
   },
   "experience": {
     "title": "PLACES WHERE I WAS USEFUL.",
     "intro": "I’ve worked with people, businesses, products, processes, and probably more spreadsheets than any human should.",
-    "stat_big": "50+",
-    "stat_text": "employees by 2023. Started as number one.",
+    "stat_tag": "AN UNOFFICIAL SECTION",
+    "stat_big": "THINGS THAT WEREN’T IN THE JOB DESCRIPTION.",
+    "stat_paras": [
+      "Somehow became the developer, designer, IT support, spreadsheet wizard, tax handler, building dispute negotiator, neighborhood liaison, land survey assistant, 3D space planner, production layout designer, procurement guy, budget planner, asset manager, inspector, machine troubleshooter, and occasionally the person responsible for making sure everything actually gets done.",
+      "Because apparently, “someone should handle this” eventually became “I’ll handle this.”"
+    ],
+    "stat_note": "Somewhere along the way, the job description became a suggestion.",
     "jobs": [
       {
         "title": "SUPERVISOR",
