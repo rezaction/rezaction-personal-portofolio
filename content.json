@@ -71,12 +71,17 @@
     "intro": "Not a list of superpowers. Just things I’ve learned, used, broken, and occasionally mastered.",
     "groups": [
       {
-        "name": "DEVELOPMENT",
+        "name": "DEVELOPMENT & ENGINEERING",
         "chips": [
-          "HTML & CSS",
+          "HTML",
+          "CSS",
           "JavaScript",
+          "Vue.js",
+          "Node.js",
           "PHP",
-          "Laravel"
+          "Laravel",
+          "CodeIgniter",
+          "Python"
         ]
       },
       {
@@ -86,7 +91,19 @@
           "Adobe Photoshop",
           "Adobe Premiere Pro",
           "Graphic Design",
-          "Logo & Apparel Design"
+          "Inkscape",
+          "Adobe Illustrator",
+          "SketchUp"
+        ]
+      },
+      {
+        "name": "OFFICE & AUTOMATION",
+        "chips": [
+          "Microsoft Word",
+          "Microsoft PowerPoint",
+          "Microsoft Excel",
+          "Advanced Spreadsheet Formulas Excel VBA",
+          "Spreadsheet Automation"
         ]
       },
       {
@@ -101,13 +118,22 @@
         ]
       },
       {
-        "name": "MANUFACTURING",
+        "name": "MANUFACTURING & QUALITY",
         "chips": [
           "Quality Control",
           "Good Manufacturing Practices (GMP)",
           "Occupational Health & Safety (K3)",
           "Halal Procedures",
           "Production Layout & Process Improvement"
+        ]
+      },
+      {
+        "name": "SYSTEMS & INFRASTRUCTURE",
+        "chips": [
+          "Wndows",
+          "Linux",
+          "Server Administration Web Hosting & Deployment",
+          "Database Management"
         ]
       }
     ],
