@@ -29,6 +29,11 @@ p{margin:0 0 12px}
 .note{font-family:'Permanent Marker',cursive;font-size:15px;border-top:3px dashed var(--ink);padding-top:10px;margin:16px 0 0;transform:rotate(-.8deg)}
 .tag{display:inline-block;font-family:Bangers,sans-serif;font-size:20px;background:var(--ink);color:var(--paper);padding:2px 12px;transform:rotate(-2deg);margin-bottom:14px}
 .inv .tag{background:var(--paper);color:var(--ink)}
+.tag.corner{position:absolute;top:-16px;right:-12px;margin:0;z-index:3;transform:rotate(4deg);box-shadow:3px 3px 0 var(--grey)}
+.hero>div:first-child{padding-top:6px}
+.nowgrid{margin:0;gap:22px 40px;grid-template-columns:repeat(2,1fr)}
+.box,.grid>*{min-width:0}
+body{overflow-x:clip}
 ul{margin:0;padding-left:20px}li{margin:4px 0}
 /* hero */
 .hero{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:end;padding-bottom:0}
@@ -80,7 +85,7 @@ a.lk{color:inherit;text-decoration:none;font-weight:700;padding:0 5px;margin-lef
 .eimg{display:block;flex:none;width:var(--ew);height:auto;margin-left:12%;transform:translateY(105%);transition:transform 1.3s cubic-bezier(.2,.8,.2,1) .25s}
 .egg.on .eimg{transform:none}
 @media(max-width:780px){
- body{font-size:16px}.grid{gap:26px;grid-template-columns:1fr}.s2,.s3,.s4,.s6{grid-column:1}
+ body{font-size:16px}.grid{gap:26px;grid-template-columns:1fr}.nowgrid{grid-template-columns:1fr;gap:16px}.tag.corner{right:-4px;top:-14px}.s2,.s3,.s4,.s6{grid-column:1}
  .hero{grid-template-columns:1fr}.portrait{order:-1}.t1,.t2,.t3{transform:none}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.eimg{transition:none}.foot.hit{animation:none}}
@@ -113,9 +118,9 @@ function fmtDate(iso){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(iso||''),d=m?new Da
 var TILT=['t3','t2','t1'];
 
 function hero(c){var h=c.hero||{},cv=c.cv||{};
- return '<section class="grid" id="top"><div class="box s6 hero t1"><div style="padding-bottom:26px">'
- +(h.tag?'<span class="tag">'+esc(h.tag)+'</span>':'')
- +'<h1>'+br(h.name)+'</h1>'+ps(h.paragraphs)
+ return '<section class="grid" id="top"><div class="box s6 hero t1">'
+ +(h.tag?'<span class="tag corner">'+esc(h.tag)+'</span>':'')
+ +'<div style="padding-bottom:26px"><h1>'+br(h.name)+'</h1>'+ps(h.paragraphs)
  +(h.marker?'<p class="mk" style="font-size:19px;margin:0">'+esc(h.marker)+'</p>':'')
  +(h.location?'<p style="margin-top:12px;opacity:.85">'+esc(h.location)+'</p>':'')
  +'<div class="btns">'+btn(h.btn_text,h.btn_href,true)+btn(cv.text,cv.url,false,true)+'</div></div>'
@@ -152,7 +157,7 @@ function experience(c){var e=c.experience||{};
  return out+'</section>'}
 
 function now(c){var n=c.now||{};
- return '<section class="grid" id="now"><div class="box s6 cur inv t3"><h2>'+esc(n.title)+'</h2><br><div class="grid" style="margin:0;gap:22px 40px;grid-template-columns:repeat(2,1fr)">'
+ return '<section class="grid" id="now"><div class="box s6 cur inv t3"><h2>'+esc(n.title)+'</h2><br><div class="grid nowgrid">'
  +arr(n.items).map(function(i){return '<p><b>'+esc(i.title)+'</b>'+esc(i.text)+'</p>'}).join('')+'</div>'
  +(n.show_updated?'<p class="note">Last updated: <span>'+esc(fmtDate(n.updated))+'</span></p>':'')+'</div></section>'}
 
