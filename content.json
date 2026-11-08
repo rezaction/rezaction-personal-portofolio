@@ -157,7 +157,7 @@
         "text": "If it can be improved, it’ll probably bother me."
       }
     ],
-    "os_note": "[NOT CONFIGURABLE. MOSTLY.]"
+    "os_note": "NOT CONFIGURABLE. MOSTLY."
   },
   "experience": {
     "title": "PLACES WHERE I WAS USEFUL.",
@@ -241,7 +241,7 @@
       },
       {
         "title": "LEARNING JAPANESE.",
-        "text": "こんにちは. That’s about as far as my confidence goes."
+        "text": "バカヤロー！大バカヤロー！That’s about as far as my confidence goes."
       },
       {
         "title": "EXPLORING RANDOM IDEAS.",
@@ -254,7 +254,7 @@
     ],
     "show_updated": true,
     "auto_date": true,
-    "updated": "2026-11-07"
+    "updated": "2026-11-08"
   },
   "contact": {
     "title": "FIND ME, OR DON'T!",
