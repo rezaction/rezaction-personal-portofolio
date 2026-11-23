@@ -204,6 +204,8 @@ function eggHtml(c){var g=c.egg||{};
  +(g.line1?'<p class="mk" style="margin:12px 0 4px">'+esc(g.line1)+'</p>':'')+(g.line2?'<p class="mk" style="margin:0">'+esc(g.line2)+'</p>':'')+'</div>'}
 
 function render(c){
+ var th=(c.meta&&c.meta.theme)||'light',root=document.documentElement;
+ if(th==='auto')root.removeAttribute('data-theme');else root.setAttribute('data-theme',th==='dark'?'dark':'light');
  if(c.meta&&c.meta.title)document.title=c.meta.title;
  var d=document.querySelector('meta[name=description]');if(!d){d=document.createElement('meta');d.name='description';document.head.appendChild(d)}
  if(c.meta&&c.meta.description)d.content=c.meta.description;
