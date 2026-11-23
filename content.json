@@ -46,22 +46,10 @@
     "intro": "A collection of things I’ve built, experimented with, designed, or spent an unreasonable amount of time thinking about.",
     "items": [
       {
-        "name": "ADSPACE",
-        "url": "https://adspace.biz.id/",
+        "name": "GoNEST",
+        "url": "https://gonest.biz.id/",
         "desc": "A little web studio focused on building clean, affordable websites and landing pages.",
         "status": "Status: Active"
-      },
-      {
-        "name": "VERA",
-        "url": "",
-        "desc": "A product identity and authentication platform concept for manufacturing businesses.",
-        "status": "Status: In Development."
-      },
-      {
-        "name": "WORKKIT SERVICE",
-        "url": "",
-        "desc": "An offline-first service management app concept for independent technicians.",
-        "status": "Status: Concept / Experiment."
       }
     ],
     "note": "Not everything here is a success story. Some are still fighting for their lives."
