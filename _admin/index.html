@@ -296,16 +296,21 @@ async function save(){
 
 /* ============ UPLOAD (ditahan di memori sampai Simpan) ============ */
 async function maybeResize(f){
+ /* PNG/JPG/WebP otomatis dikecilkan (lebar maks 1600px) dan dijadikan WebP kalau hasilnya lebih ringan */
  if(!/^image\/(png|jpeg|webp)$/.test(f.type))return f;
- try{const bmp=await createImageBitmap(f),max=2000;if(bmp.width<=max)return f;
-  const c=document.createElement('canvas');c.width=max;c.height=Math.round(bmp.height*max/bmp.width);c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);
-  return await new Promise(r=>c.toBlob(b=>r(b||f),f.type,.9))}catch(e){return f}}
+ try{const bmp=await createImageBitmap(f),max=1600,sc=Math.min(1,max/bmp.width);
+  const c=document.createElement('canvas');c.width=Math.round(bmp.width*sc);c.height=Math.round(bmp.height*sc);c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);
+  const to=t=>new Promise(r=>c.toBlob(r,t,.85));
+  let out=await to('image/webp');
+  if(!out||out.type!=='image/webp')out=sc<1?await to(f.type):null; /* browser tanpa dukungan encode WebP */
+  return out&&(sc<1||out.size<f.size)?out:f}catch(e){return f}}
 const readB64=b=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(b)});
 async function stage(file,dir){
  if(file.size>25*1024*1024)throw new Error('File terlalu besar (maks 25 MB).');
  const blob=await maybeResize(file),dataUrl=await readB64(blob);
  const m=/(.*?)(\.[a-z0-9]+)?$/i.exec(file.name),base=(m[1]||'file').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'file';
- const path=dir+base+'-'+Date.now().toString(36).slice(-4)+(m[2]||'').toLowerCase();
+ const ext=blob!==file&&blob.type?'.'+blob.type.split('/')[1].replace('jpeg','jpg'):(m[2]||'').toLowerCase();
+ const path=dir+base+'-'+Date.now().toString(36).slice(-4)+ext;
  S.pending[path]=dataUrl.split(',')[1];if(blob.type.startsWith('image/'))S.media[path]=dataUrl;return path}
 const resolveSrc=v=>S.media[v]||(/^(https?:|data:|\/)/.test(v)?v:'../'+v);
 
