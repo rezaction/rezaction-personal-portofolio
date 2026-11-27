@@ -8,58 +8,166 @@
     "url": "assets/files/reza-pamungkas-cv-bilingual-enhanced-h85v.pdf"
   },
   "hero": {
-    "tag": "HEY. YOU FOUND ME.",
-    "name": "REZA\nPAMVNGKAS.",
+    "tag": "Lost, are we?",
+    "name": "Reza\nPamvngkas.",
     "paragraphs": [
       "I’m probably not the best. But hey, at least I know what I’m doing. Sometimes.",
       "I build things. Mostly the kind that actually work."
     ],
-    "marker": "Developer. Designer. Problem solver. Occasional overthinker.",
+    "marker": "Developer / Designer / Problem solver / Occasional overthinker",
     "location": "Based in Indonesia. Mentally somewhere else.",
-    "btn_text": "Explore my questionable achievements",
+    "btn_text": "See the damage",
     "btn_href": "#projects",
+    "burst": "Somewhere between genius and what the heck",
+    "sticker": "Artist’s impression.\n0% flattering.",
+    "caption": "↑ Yes, that’s supposed to be me. Don’t judge.",
     "image": "assets/uploads/1000146350-44ir.png",
-    "image_alt": "Black and white ink sketch of Reza, eyes covered by a censor box",
-    "burst": "Somewhere between genius and what the heck.",
-    "caption": "↑ Yes, that’s supposed to be me. Don’t judge."
+    "image_alt": "Black and white ink sketch of Reza, eyes covered by a censor bar"
   },
+  "marquee": [
+    "Think you can do better?",
+    "Prove it",
+    "Go on, judge me",
+    "I dare you to hire me",
+    "Didn’t think so"
+  ],
   "about": {
-    "title": "So, who am I?",
+    "kicker": "01 / About",
+    "title": "So, who’s this *guy?*",
+    "intro": "",
     "paragraphs": [
-      "Just a guy who enjoys building things, breaking things, and occasionally fixing the things he broke.",
-      "Interested in technology, software, design, business, and figuring out how stuff works.",
-      "I don’t really have a master plan. I just learn things, try things, mess things up, and somehow figure things out along the way."
+      "Just a guy who says “how hard can it be?” way too often.",
+      "Into technology, software, design, business, and poking at how stuff works. Whether or not anyone asked.",
+      "No master plan. I learn things, try things, mess things up, and somehow figure it out along the way. Don’t ask me how."
     ],
-    "facts_tag": "A FEW USELESS FACTS ABOUT ME",
+    "facts_tag": "The fine print",
     "facts": [
-      "Based in Indonesia.",
-      "Self-taught developer.",
-      "Likes building things from scratch.",
       "Has too many ideas. Send help.",
-      "Learns by doing. Occasionally by making mistakes.",
-      "Can turn “I wonder if this works” into an unnecessarily long project."
+      "Can turn “I wonder if this works” into an unnecessarily long project.",
+      "“Just a small tweak” has never once been small.",
+      "Reads the manual. Right after everything catches fire."
     ]
   },
   "projects": {
-    "title": "LOOK! I ACTUALLY MADE SOMETHING.",
-    "marker": "Some are finished. Some are not. We’re all a work in progress.",
-    "intro": "A collection of things I’ve built, experimented with, designed, or spent an unreasonable amount of time thinking about.",
+    "kicker": "02 / Projects",
+    "title": "Look. I actually made *something.*",
+    "intro": "Exhibit A, and the empty chair reserved for Exhibit B. Please lower your expectations responsibly.",
+    "pending": {
+      "label": "Pending",
+      "title": "Currently living rent-free in my head.",
+      "text": "Eviction notice pending.",
+      "note": "No screenshots. No demo. No evidence. Very exclusive."
+    },
     "items": [
       {
         "name": "GoNEST",
         "url": "https://gonest.biz.id/",
-        "desc": "A little web studio focused on building clean, affordable websites and landing pages.",
+        "image": "",
+        "desc": "A little web studio building clean, affordable websites and landing pages. Fewer sarcastic comments included. Usually.",
         "status": "Status: Active"
       }
+    ]
+  },
+  "experience": {
+    "kicker": "03 / Experience",
+    "title": "Places where I was *useful.*",
+    "intro": "I’ve worked with people, businesses, products, processes, and probably more spreadsheets than any human should.",
+    "jobs": [
+      {
+        "title": "Supervisor",
+        "period": "2020 — 2025",
+        "orgs": [
+          {
+            "name": "CV Dwimanunggal Indonesia",
+            "url": "https://dwimanunggal.co.id"
+          },
+          {
+            "name": "PT DMI Sejahtera",
+            "url": "https://dmisejahtera.co.id"
+          }
+        ],
+        "paragraphs": [
+          "Joined early and grew alongside the business, working closely with its founders and co-founder.",
+          "Contributed to daily operations while the team kept getting bigger."
+        ],
+        "list_intro": "My responsibilities included:",
+        "list": [
+          "Supervising teams and improving work methods.",
+          "Recruitment, interviews, onboarding, and training.",
+          "Inventory, purchasing, and quality control.",
+          "Payroll and administrative support.",
+          "Product development and production operations.",
+          "Manufacturing facility layout and workflow planning.",
+          "K3, halal procedures, and GMP implementation."
+        ],
+        "note": "Signed up for one job. Unlocked several side quests."
+      },
+      {
+        "title": "Freelance & Independent Work",
+        "period": "2015 — 2019",
+        "orgs": [
+          {
+            "name": "Self-employed, self-managed, self-blamed",
+            "url": ""
+          }
+        ],
+        "paragraphs": [
+          "Graphic design, logo design, apparel graphics, screen printing, and creative projects for small businesses, organizations, and communities.",
+          "Also experimented with an independent culinary business."
+        ],
+        "list_intro": "",
+        "list": [],
+        "note": "Basically, a five-year side quest with invoices."
+      },
+      {
+        "title": "Data Research & Analysis",
+        "period": "2012 — 2014",
+        "orgs": [
+          {
+            "name": "Political Party Organization",
+            "url": ""
+          }
+        ],
+        "paragraphs": [
+          "Worked independently on survey research and respondent analysis."
+        ],
+        "list_intro": "",
+        "list": [],
+        "note": "The details are confidential. You’re welcome."
+      }
     ],
-    "note": "Not everything here is a success story. Some are still fighting for their lives."
+    "stat_tag": "An unofficial section",
+    "stat_big": "Things that weren’t in the job description.",
+    "stat_paras": [
+      "Because apparently, “someone should handle this” eventually became “I’ll handle this.”"
+    ],
+    "stat_note": "At some point, the job description became a suggestion.",
+    "chips": [
+      "Developer",
+      "Designer",
+      "IT support",
+      "Spreadsheet wizard",
+      "Tax handler",
+      "Building dispute negotiator",
+      "Neighborhood liaison",
+      "Land survey assistant",
+      "3D space planner",
+      "Production layout designer",
+      "Procurement guy",
+      "Budget planner",
+      "Asset manager",
+      "Inspector",
+      "Machine troubleshooter",
+      "The person who makes sure it actually gets done"
+    ]
   },
   "skills": {
-    "title": "THINGS I CAN DO (WITHOUT PANICKING).",
-    "intro": "Not a list of superpowers. Just things I’ve learned, used, broken, and occasionally mastered.",
+    "kicker": "04 / Skills",
+    "title": "Things I can do (without *panicking).*",
+    "intro": "Not a list of superpowers. Just tools that haven’t filed a complaint yet.",
     "groups": [
       {
-        "name": "DEVELOPMENT & ENGINEERING",
+        "name": "Development & Engineering",
         "chips": [
           "HTML",
           "CSS",
@@ -73,7 +181,7 @@
         ]
       },
       {
-        "name": "DESIGN & CREATIVE",
+        "name": "Design & Creative",
         "chips": [
           "CorelDRAW",
           "Adobe Photoshop",
@@ -84,17 +192,18 @@
         ]
       },
       {
-        "name": "OFFICE & AUTOMATION",
+        "name": "Office & Automation",
         "chips": [
           "Microsoft Word",
           "Microsoft PowerPoint",
           "Microsoft Excel",
-          "Advanced Spreadsheet Formulas Excel VBA",
+          "Advanced Spreadsheet Formulas",
+          "Excel VBA",
           "Spreadsheet Automation"
         ]
       },
       {
-        "name": "BUSINESS & OPERATIONS",
+        "name": "Business & Operations",
         "chips": [
           "Operations Management",
           "Team Supervision",
@@ -105,7 +214,7 @@
         ]
       },
       {
-        "name": "MANUFACTURING & QUALITY",
+        "name": "Manufacturing & Quality",
         "chips": [
           "Quality Control",
           "Good Manufacturing Practices (GMP)",
@@ -115,138 +224,75 @@
         ]
       },
       {
-        "name": "SYSTEMS & INFRASTRUCTURE",
+        "name": "Systems & Infrastructure",
         "chips": [
-          "Wndows",
+          "Windows",
           "Linux",
-          "Server Administration Web Hosting & Deployment",
+          "Server Administration",
+          "Web Hosting & Deployment",
           "Database Management"
         ]
       }
     ],
-    "super_tag": "THE ACTUAL SUPERPOWER",
+    "super_tag": "The actual superpower",
     "super_big": "Adaptability. Improvisation.",
     "super_text": "Learning things without waiting for someone to explain them first.",
     "super_note": "Jack of some trades. Master of figuring things out.",
-    "os_tag": "PERSONAL OPERATING SYSTEM",
-    "os_big": "THE DEFAULT SETTINGS.",
+    "os_tag": "Personal operating system",
+    "os_big": "The default settings.",
     "os_items": [
       {
-        "title": "FIGURE IT OUT.",
+        "title": "Figure it out.",
         "text": "If nobody knows how, guess who’s learning."
       },
       {
-        "title": "MAKE IT WORK.",
+        "title": "Make it work.",
         "text": "Preferably without creating three new problems."
       },
       {
-        "title": "MAKE IT BETTER.",
+        "title": "Make it better.",
         "text": "If it can be improved, it’ll probably bother me."
       }
     ],
-    "os_note": "NOT CONFIGURABLE. MOSTLY."
-  },
-  "experience": {
-    "title": "PLACES WHERE I WAS USEFUL.",
-    "intro": "I’ve worked with people, businesses, products, processes, and probably more spreadsheets than any human should.",
-    "stat_tag": "AN UNOFFICIAL SECTION",
-    "stat_big": "THINGS THAT WEREN’T IN THE JOB DESCRIPTION.",
-    "stat_paras": [
-      "Somehow became the developer, designer, IT support, spreadsheet wizard, tax handler, building dispute negotiator, neighborhood liaison, land survey assistant, 3D space planner, production layout designer, procurement guy, budget planner, asset manager, inspector, machine troubleshooter, and occasionally the person responsible for making sure everything actually gets done.",
-      "Because apparently, “someone should handle this” eventually became “I’ll handle this.”"
-    ],
-    "stat_note": "Somewhere along the way, the job description became a suggestion.",
-    "jobs": [
-      {
-        "title": "SUPERVISOR",
-        "orgs": [
-          {
-            "name": "CV Dwimanunggal Indonesia",
-            "url": "dwimanunggal.co.id"
-          },
-          {
-            "name": "PT DMI Sejahtera",
-            "url": "dmisejahtera.co.id"
-          }
-        ],
-        "period": "2020 — 2025",
-        "size": "s4",
-        "paragraphs": [
-          "Joined as the first employee and grew alongside the business, working closely with its founders and co-founder.",
-          "Contributed to business operations and organizational growth, helping support a workforce of 50+ employees by 2023."
-        ],
-        "list_intro": "My responsibilities included:",
-        "list": [
-          "Supervising teams and improving work methods.",
-          "Recruitment, interviews, onboarding, and training.",
-          "Inventory, purchasing, and quality control.",
-          "Payroll and administrative support.",
-          "Product development and production operations.",
-          "Manufacturing facility layout and workflow planning.",
-          "K3, halal procedures, and GMP implementation."
-        ],
-        "note": "Started as employee number one. Somehow ended up helping keep the whole thing running."
-      },
-      {
-        "title": "DATA RESEARCH & ANALYSIS",
-        "orgs": [
-          {
-            "name": "Political Party Organization",
-            "url": ""
-          }
-        ],
-        "period": "2012 — 2014",
-        "size": "s3",
-        "paragraphs": [
-          "Worked independently on survey-related research, respondent analysis, and sensitive data projects."
-        ],
-        "list_intro": "",
-        "list": [],
-        "note": "Some details are better left off the internet. You’re welcome."
-      },
-      {
-        "title": "FREELANCE & INDEPENDENT WORK",
-        "orgs": [],
-        "period": "2015 — 2019",
-        "size": "s3",
-        "paragraphs": [
-          "Worked on graphic design, logo design, apparel graphics, screen printing, and creative projects for small businesses, organizations, and communities.",
-          "Also experimented with an independent culinary business."
-        ],
-        "list_intro": "",
-        "list": [],
-        "note": "Basically, I was trying things. A lot of things."
-      }
-    ]
+    "os_note": "Not configurable. Mostly."
   },
   "now": {
-    "title": "CURRENTLY WASTING TIME ON",
+    "kicker": "05 / Now",
+    "title": "Currently wasting time *on.*",
+    "intro": "Productive procrastination, curated.",
     "items": [
       {
-        "title": "BUILDING SOFTWARE.",
-        "text": "Because apparently, having ideas isn’t enough. Now I have to build them."
+        "title": "Building software.",
+        "text": "Writing code, then acting surprised when it works on the first try. Suspicious.",
+        "accent": ""
       },
       {
-        "title": "LEARNING JAPANESE.",
-        "text": "バカヤロー！大バカヤロー！That’s about as far as my confidence goes."
+        "title": "Learning Japanese.",
+        "text": "That’s about as far as my confidence goes.",
+        "accent": "バカヤロー！大バカヤロー！"
       },
       {
-        "title": "EXPLORING RANDOM IDEAS.",
-        "text": "Some make sense. Some probably shouldn’t exist."
+        "title": "Opening new tabs.",
+        "text": "“For research.” There are 47 of them. None are closing.",
+        "accent": ""
       },
       {
-        "title": "TRYING TO FINISH UNFINISHED PROJECTS.",
-        "text": "A never-ending battle between ambition and procrastination."
+        "title": "Finishing unfinished projects.",
+        "text": "Ambition vs. procrastination. Procrastination is currently winning.",
+        "accent": ""
       }
     ],
     "show_updated": true,
     "auto_date": true,
-    "updated": "2026-11-08"
+    "updated": "2026-11-27"
   },
   "contact": {
-    "title": "FIND ME, OR DON'T!",
+    "kicker": "06 / Contact",
+    "title": "Find me, or don’t!",
     "intro": "I’m not particularly hard to find. Just don’t expect me to be interesting 24/7.",
-    "social_title": "AROUND THE INTERNET",
+    "stamp": "Replies eventually. Probably.",
+    "note": "For projects, collaborations, questions, or sending me money. Mostly the first three.",
+    "hire_text": "Hire me",
     "socials": [
       {
         "label": "Instagram",
@@ -265,22 +311,21 @@
         "url": "https://www.linkedin.com/in/rezaction"
       }
     ],
-    "email_title": "EMAIL",
-    "email": "rezaction@proton.me",
-    "note": "For projects, collaborations, questions, or sending me money. Mostly the first three.",
-    "hire_text": "Hire me"
+    "warn_title": "Please try this button first.",
+    "warn_hint": "Not interested? Tap {sosmed} again.",
+    "email": "rezaction@proton.me"
   },
   "footer": {
-    "title": "That’s it. You’ve seen enough.",
+    "title": "That’s it. You’ve seen *enough.*",
     "marker": "Now go do something useful.",
     "text": "…Unless you have a project for me. Then stay.",
     "signature": "— Reza, probably."
   },
   "egg": {
-    "image": "assets/uploads/1000146354-4s2j.png",
-    "alt": "Reza peeking over the box, giving the middle finger",
     "title": "FVCK OFF.\nDO SOMETHING USEFUL.",
-    "line1": "I'M EMBARRASSED FOR BOTH OF US.",
-    "line2": "— Reza, definitely."
+    "line1": "I’m embarrassed for both of us.",
+    "line2": "— Reza, definitely.",
+    "image": "assets/uploads/1000146354-4s2j.png",
+    "alt": "Reza peeking over the box, giving the middle finger"
   }
 }
